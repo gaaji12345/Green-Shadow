@@ -67,5 +67,39 @@ $(document).ready(function() {
 });
 
 
+$('#registerForms').on('submit', function(event) {
+    event.preventDefault();
+    const registrationRequestss = {
+        email: $("#registerEmail").val(),
+        name: $("#registerName").val(),
+        phoneNumber: $("#registerphoneNumber").val(),
+        password: $("#registerPassword").val(),
+        role: $("#userRole").val()
+    };
+
+
+
+    $.ajax({
+        url: 'http://localhost:8080/auth/register',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(registrationRequestss),
+        success: function(response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Registration Successful',
+                text: response.role
+            });
+        },
+        error: function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Registration Failed',
+                text: 'Error while registering user.'
+            });
+        }
+    });
+});
+
 
 
