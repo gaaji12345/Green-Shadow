@@ -27,17 +27,38 @@ public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+//        httpSecurity.csrf(AbstractHttpConfigurer::disable)
+//                .cors(Customizer.withDefaults())
+//                .authorizeHttpRequests(request -> request
+//                        .requestMatchers("/auth/**").permitAll()
+//                        .anyRequest().authenticated())
+//                .sessionManagement(manager-> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+//        return httpSecurity.build();
+//    }
+
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/auth/**", "/category/**", "/product/**", "/order/**").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
+                        // MANAGER: Full access
+                        .requestMatchers("/api/**").hasRole("MANAGER")
+                        // ADMINISTRATIVE: Limited access
+                        .requestMatchers("/api/crops/**", "/api/fields/**", "/api/logs/**").hasAnyRole("ADMINISTRATIVE")
+                        // SCIENTIST: Limited access
+                        .requestMatchers("/api/staff/**", "/api/vehicles/**", "/api/equipment/**").hasRole("SCIENTIST")
+                        // Other requests require authentication
                         .anyRequest().authenticated())
-                .sessionManagement(manager-> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){

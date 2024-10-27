@@ -4,5 +4,7 @@ package com.gaajiFarm.GaajiFarm.util.enums;/*  gaajiCode
     */
 
 public enum UserRole {
-    MANAGER, ADMINISTRATIVE,  SCIENTIST
+    MANAGER, ADMINISTRATIVE,SCIENTIST
+
+//    USER,ADMIN
 }
