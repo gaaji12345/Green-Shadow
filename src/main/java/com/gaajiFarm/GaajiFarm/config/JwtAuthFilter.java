@@ -3,6 +3,7 @@ package com.gaajiFarm.GaajiFarm.config;/*  gaajiCode
     09/09/2024
     */
 
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+
 
 @Component
 @Slf4j
@@ -53,11 +55,53 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     }
 
-    private String getTokenFromRequest(HttpServletRequest request){
+
+
+//    @Override
+//    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+//        String token = getTokenFromRequest(request);
+//
+//        if (token != null) {
+//            log.info("Authorization Header: {}", request.getHeader("Authorization"));
+//
+//            if (!token.matches("^[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+$")) {
+//                log.warn("Invalid JWT Token");
+//                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid JWT Token");
+//                return;
+//            }
+//
+//            String username = jwtUtils.getUsernameFromToken(token);
+//
+//            UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+//
+//            if (StringUtils.hasText(username) && jwtUtils.isTokenValid(token, userDetails)) {
+//                log.info("VALID JWT FOR {}", username);
+//                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+//                        userDetails, null, userDetails.getAuthorities()
+//                );
+//                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+//                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+//            }
+//        }
+//        filterChain.doFilter(request, response);
+//    }
+
+
+//    private String getTokenFromRequest(HttpServletRequest request){
+//        String token = request.getHeader("Authorization");
+//        if (StringUtils.hasText(token) && StringUtils.startsWithIgnoreCase(token, "Bearer ")){
+//            return token.substring(7);
+//        }
+//
+//        return null;
+//    }
+
+    private String getTokenFromRequest(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
-        if (StringUtils.hasText(token) && StringUtils.startsWithIgnoreCase(token, "Bearer ")){
-            return token.substring(7);
+        if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
+            return token.substring(7); // Remove "Bearer " prefix
         }
-        return null;
+        return null; // Return null if the token is not present or malformed
     }
+
 }

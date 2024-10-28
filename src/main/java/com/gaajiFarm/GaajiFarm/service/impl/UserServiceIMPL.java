@@ -54,6 +54,7 @@ public class UserServiceIMPL implements UserService {
 
         // Create a new User object
         User user = User.builder()
+                .id(registrationRequest.getId())
                 .name(registrationRequest.getName())
                 .email(registrationRequest.getEmail())
                 .password(passwordEncoder.encode(registrationRequest.getPassword()))

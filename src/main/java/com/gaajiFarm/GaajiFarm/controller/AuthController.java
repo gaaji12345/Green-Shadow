@@ -21,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@CrossOrigin
 public class AuthController {
     private final UserService userService;
 
@@ -40,8 +41,7 @@ public class AuthController {
         return new ResponceUtil(200,"Deleted", userService.deleteUser(email));
 
     }
-    @GetMapping("/getall")
-    @PreAuthorize("hasAuthority('MANAGER')")
+    @GetMapping
     public ResponseEntity<Responce> getAllUsers(){
         return ResponseEntity.ok(userService.getAllUsers());
     }
