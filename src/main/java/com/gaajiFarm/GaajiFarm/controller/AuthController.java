@@ -36,22 +36,24 @@ public class AuthController {
     }
 
     @DeleteMapping
-    @PreAuthorize("hasAuthority('MANAGER')")
     public ResponceUtil deletCustomer(@RequestParam("email") String email){
         return new ResponceUtil(200,"Deleted", userService.deleteUser(email));
 
     }
-//    @GetMapping()
-//    @PreAuthorize("hasAuthority('MANAGER')")
-//    public ResponseEntity<Responce> getAllUsers(){
-//        return ResponseEntity.ok(userService.getAllUsers());
-//    }
-
-    @GetMapping
-    public ResponseEntity<List<UserDTO>> getAllUsers(
-            @RequestHeader("X-Current-User-Role") UserRole currentUserRole) throws AccessDeniedException {
-
-        List<UserDTO> users = userService.getAllUsersll(currentUserRole);
-        return ResponseEntity.ok(users);
+    @GetMapping("/getall")
+    @PreAuthorize("hasAuthority('MANAGER')")
+    public ResponseEntity<Responce> getAllUsers(){
+        return ResponseEntity.ok(userService.getAllUsers());
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Responce> updateUser(@RequestBody UserDTO userDTO) {
+        // Call the updateUser service method to update the user
+        Responce response = userService.updateUser(userDTO);
+
+        // Return the response with HTTP status 200
+        return ResponseEntity.ok(response);
+    }
+
+
 }

@@ -167,4 +167,38 @@ public Responce loginUser(LoginRequest loginRequest) {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Responce updateUser(UserDTO updateUserRequest) {
+        log.info("Updating user with email: {}", updateUserRequest.getEmail());
+
+        // Fetch the existing user from the repository
+        User existingUser = userRepo.findByEmail(updateUserRequest.getEmail())
+                .orElseThrow(() -> new NotFoundException("User not found with email: " + updateUserRequest.getEmail()));
+
+        // Update user details
+        existingUser.setName(updateUserRequest.getName());
+        existingUser.setPhoneNumber(updateUserRequest.getPhoneNumber());
+        existingUser.setRole(UserRole.valueOf((updateUserRequest.getRole())));
+
+        // Optionally update password if provided
+        if (updateUserRequest.getPassword() != null && !updateUserRequest.getPassword().isEmpty()) {
+            existingUser.setPassword(passwordEncoder.encode(updateUserRequest.getPassword()));
+        }
+
+        // Save updated user to the repository
+        User savedUser = userRepo.save(existingUser);
+        log.info("User with email {} updated successfully.", updateUserRequest.getEmail());
+
+        // Map the updated user to a DTO
+        UserDTO userDto = entityDtoMapper.mapUserToDtoBasic(savedUser);
+
+        // Return successful response
+        return Responce.builder()
+                .status(200)
+                .message("User successfully updated")
+                .user(userDto)
+                .build();
+    }
+
+
 }

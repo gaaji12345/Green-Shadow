@@ -28,4 +28,6 @@ public interface UserService {
 
     public List<UserDTO> getAllUsersll(UserRole currentUserRole) throws AccessDeniedException;
 
+    public Responce updateUser(UserDTO updateUserRequest);
+
 }
