@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="assects/normalize/normalize.css">
     <link rel="stylesheet" href="assects/styles/login.css">
     <link rel="stylesheet" href="assects/styles/dash.css">
+    <link rel="stylesheet" href="assects/styles/register.css">
+    <link rel="stylesheet" href="assects/styles/user.css">
+    <link rel="stylesheet" href="assects/styles/filed.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -32,56 +35,63 @@
                 <a >Forgot Password</a>
             </div>
             <button type="submit" class="btn">Login</button>
-            <div class="register-link">
+            <div class="register-link" style="cursor: pointer">
                 <p>Dont have an account? <a>Register</a></p>
             </div>
         </form>
     </div>
 </section>
 
-<div class="container mt-5" id="register" style="display: none;">
-    <div class="form-container">
-        <h2 class="text-center">Register</h2>
-        <form id="registerForms">
+<section id="register" style="display: none" >
+    <div class="wrapper">
+        <div class="container mt-9">
+            <div class="form-container">
+                <h2 class="text-center">Register</h2>
+                <form id="registerForms">
+                    <div class="form-group">
+                        <label for="registerEmail">Email:</label>
+                        <input type="email" class="form-control" id="registerEmail" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="registerEmail">Email:</label>
-                <input type="email" class="form-control" id="registerEmail" required>
-            </div>
-
-            <div class="form-group">
-                <label for="registerEmail">Name:</label>
-                <input type="text" class="form-control" id="registerName" required>
-            </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Name:</label>
+                        <input  type="text" class="form-control" id="registerName" required>
+                    </div>
 
 
-            <div class="form-group">
-                <label for="registerEmail">Phone:</label>
-                <input type="text" class="form-control" id="registerphoneNumber" required>
+                    <div class="form-group">
+                        <label for="registerEmail">Phone:</label>
+                        <input type="text" class="form-control" id="registerphoneNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password:</label>
+                        <input type="password" class="form-control" id="registerPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userRole">Role:</label>
+                        <select class="form-control" id="userRole" required>
+                            <option value="">Select Role</option>
+                            <option value="MANAGER">MANAGER</option>
+                            <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                            <option value="SCIENTIST">SCIENTIST</option>
+                            <option value="OTHER">OTHER</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <button type="button" class="btn btn-secondary btn-block mt-2" id="backButton">Back</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="registerPassword">Password:</label>
-                <input type="password" class="form-control" id="registerPassword" required>
-            </div>
-            <!--      <div class="form-group">-->
-            <!--        <label for="confirmPassword">Confirm Password:</label>-->
-            <!--        <input type="password" class="form-control" id="confirmPassword" required>-->
-            <!--      </div>-->
-            <div class="form-group">
-                <label for="userRole">Role:</label>
-                <select class="form-control" id="userRole" required>
-                    <option value="">Select Role</option>
-                    <option value="MANAGER">User</option>
-                    <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
-                    <option value="SCIENTIST">SCIENTIST</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
-            <button type="button" class="btn btn-secondary btn-block mt-2" id="backButton">Back</button>
-        </form>
+
+        </div>
     </div>
 
-</div>
+
+</section>
+
+
+
+
 
 
 <!--Admin Dash board--->
@@ -150,8 +160,8 @@
             </div>
             <div class="col-6 col-md-3 icon-container">
                 <a  class="icon-box">
-                    <i class="fas fa-envelope icon" id="suplink"></i>
-                    <div class="home">Supplier</div>
+                    <i class="fas fa-envelope icon" id="filedlink"></i>
+                    <div class="home">Filed</div>
                 </a>
             </div>
             <div class="col-6 col-md-3 icon-container">
@@ -182,7 +192,188 @@
     </div>
 
 
+
+
 </section>
+
+
+<section id="user" style="display: none">
+
+    <div class="container" id="user2d">
+        <h2 class="text-center">Register User</h2>
+        <div class="message"></div>
+        <form id="registrationForms2">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="emailuser">Email</label>
+                    <input type="email" class="form-control" id="emailuser" name="email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div  class="form-group col-md-6">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="roleuser">Role</label>
+                <select class="form-control" id="roleuser" name="role">
+                    <option value="MANAGER">MANAGER</option>
+                    <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                    <option value="SCIENTIST">SCIENTIST</option>
+                    <option value="OTHER">OTHER</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-outline-primary" id="userSave">SAVE</button>
+            <button type="button" class="btn btn-outline-danger" id="deleteUser">DELETE</button>
+            <button type="button" class="btn btn-outline-info" id="updateuser">UPDATE</button>
+
+        </form>
+        <h3 class="mt-5">Registered Users</h3>
+        <table class="table table-bordered mt-3 table table-hover" id="userTable">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="userTboady">
+            <!-- User data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+
+<section id="email" style="display: none">
+    <div class="container">
+        <h2 class="text-center">Send Email</h2>
+        <div class="alert alert-success" id="successAlert" role="alert"></div>
+        <div class="alert alert-danger" id="errorAlert" role="alert"></div>
+
+        <form id="emailForm">
+            <div class="form-group">
+                <label for="toEmail">To</label>
+                <input type="email" class="form-control" id="toEmail" name="to" placeholder="Enter recipient's email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject" required>
+            </div>
+            <div class="form-group">
+                <label for="body">Message</label>
+                <textarea class="form-control" id="body" name="body" rows="4" placeholder="Enter message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Email</button>
+        </form>
+    </div>
+</section>
+
+
+<section id="fieldmain" style="display: none">
+    <div class="container">
+        <!-- Form Header -->
+        <h2 class="text-center form-header p-3 rounded">Add Field Data</h2>
+
+        <!-- Form for Field Data -->
+        <form id="fieldForm" class="mb-5">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="fieldCode" class="form-label">Field Code</label>
+                    <input type="text" class="form-control" id="fieldCode" name="fieldCode" placeholder="Enter Field Code">
+                </div>
+                <div class="col-md-6">
+                    <label for="fieldName" class="form-label">Field Name</label>
+                    <input type="text" class="form-control" id="fieldName" name="fieldName" placeholder="Enter Field Name">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="fieldLocation" class="form-label">Field Location</label>
+                    <input type="text" class="form-control" id="fieldLocation" name="fieldLocation" placeholder="Enter Field Location">
+                </div>
+                <div class="col-md-6">
+                    <label for="size" class="form-label">Size (Acres)</label>
+                    <input type="number" class="form-control" id="size" name="size" placeholder="Enter Size">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="cropCode" class="form-label">Crop Code</label>
+<!--                    <input type="text" class="form-control" id="cropCode" name="cropCode" placeholder="Enter Crop Code">-->
+                    <select class="form-control" id="cropCode" name="cropCode">
+                        <option value="">Select CROP ID</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="nameOfCrop" class="form-label">Crop Name</label>
+                    <input type="text" class="form-control" id="nameOfCrop" name="nameOfCrop" placeholder="Enter Crop Name" >
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="staffId" class="form-label">Staff ID</label>
+<!--                    <input type="text" class="form-control" id="staffId" name="staffId" placeholder="Enter Staff ID">-->
+                    <select class="form-control" id="staffId" name="staffId">
+                        <option value="">Select Staff ID</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="fieldImage1" class="form-label">Field Image</label>
+                    <input type="file" class="form-control file-input" id="fieldImage1" name="fieldImageFile" accept="image/*">
+
+                    <div class="upload-icon" onclick="document.getElementById('fieldImage1').click();">
+                        <i class="fa fa-camera" aria-hidden="true"></i> <!-- Font Awesome icon for camera -->
+                    </div>
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" id="savefieldbtn">SAVE</button>
+<!--            <button type="button" class="btn btn-outline-secondary">Secondary</button>-->
+            <button type="button" class="btn btn-outline-success" id="updatefields">UPDATE</button>
+            <button type="button" class="btn btn-outline-danger" id="deleteFiled">DELETE</button>
+        </form>
+
+        <!-- Table Header -->
+        <h2 class="text-center table-header p-3 rounded">Field Data Table</h2>
+
+        <!-- Table to Display Data -->
+        <table class="table table-bordered table-striped table-hover" id="filedTable">
+            <thead class="table-header">
+            <tr>
+                <th scope="col">Field Code</th>
+                <th scope="col">Field Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Size (Acres)</th>
+                <th scope="col">Crop Code</th>
+                <th scope="col">Crop Name</th>
+                <th scope="col">Staff ID</th>
+                <th scope="col">Field Image</th>
+            </tr>
+            </thead>
+            <tbody id="fieldTableBody">
+            <!-- JavaScript will populate rows here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
 
 
 
@@ -191,6 +382,9 @@
 <script src="assects/sweetAlerts.js"></script>
 <script src="assects/controllers/logAreg.js"></script>
 <script src="assects/controllers/dash.js"></script>
+<script src="assects/controllers/users.js"></script>
+<script src="assects/controllers/test.js"></script>
+<script src="assects/controllers/field.js"></script>
 
 </body>
 </html>
