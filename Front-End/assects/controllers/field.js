@@ -205,3 +205,102 @@ $('#deleteFiled').click(function (){
         }
     });
 });
+
+
+function btnRowClick() {
+    $('#filedTable').on('click', 'tr', function() {
+        // Your existing code here
+        let id=$(this).children(":eq(0)").text();
+        let name=$(this).children(":eq(1)").text();
+        let gender=$(this).children(":eq(2)").text();
+        let joindate=$(this).children(":eq(3)").text();
+        let level=$(this).children(":eq(4)").text();
+        let totp=$(this).children(":eq(5)").text();
+        let dob=$(this).children(":eq(6)").text();
+        let pic=$(this).children(":eq(7)").text();
+
+
+
+
+        // console.log(id,name,address,contact);
+
+        $('#fieldCode').val(id);
+        $('#fieldName').val(name);
+        $('#fieldLocation').val(gender);
+        $('#size').val(joindate);
+        $('#cropCode').val(level);
+        $('#nameOfCrop').val(totp);
+        $('#staffId').val(dob);
+        $('#fieldImage1').val('')
+
+    });
+}
+
+function clearFields() {
+    $('#fieldCode').val('');
+    $('#fieldName').val('');
+    $('#fieldLocation').val('');
+    $('#size').val('');
+    $('#cropCode').val('');
+    $('#nameOfCrop').val('');
+    $('#staffId').val('');
+    $('#fieldImage1').val('');
+    getNextFiledCode();
+    $('#fieldCode').focus();
+}
+
+
+
+$('#updatefields').click(function (e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Create a FormData object
+    let formData = new FormData();
+
+    // Append form data to the FormData object
+    formData.append("fieldCode", $("#fieldCode").val());
+    formData.append("fieldName", $("#fieldName").val());
+    formData.append("fieldLocation", $("#fieldLocation").val());
+    formData.append("size", $("#size").val());
+    formData.append("cropCode", $("#cropCode").val() || null); // Optional field
+    formData.append("nameOfCrop", $("#nameOfCrop").val() || null); // Optional field
+    formData.append("staffId", $("#staffId").val() || null); // Optional field
+    formData.append("fieldImageFile", $("#fieldImage1")[0].files[0]); // File upload
+
+    // Retrieve the token from localStorage (adjust this based on where you store your token)
+
+
+    // Make AJAX request to the update endpoint with authorization header
+    $.ajax({
+        url: "http://localhost:8080/auth/field/update",
+        type: "PUT",
+        data: formData,
+        processData: false, // Required for FormData
+        contentType: false, // Required for FormData
+        // headers: {
+        //     "Authorization": "Bearer " + token // Add the token to the Authorization header
+        // },
+        success: function (response) {
+            console.log("Field updated successfully:", response);
+
+            // Optional: Refresh the table after update
+            getAllFileds();
+            clearFields();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Update Successful',
+                text: 'The field data has been updated successfully.'
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error("Failed to update field:", error);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Update Failed',
+                text: 'An error occurred while updating the field data. Status: ' + xhr.status
+            });
+        }
+    });
+});
