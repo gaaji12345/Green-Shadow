@@ -3,12 +3,15 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
     27/10/2024
     */
 
+import com.gaajiFarm.GaajiFarm.util.enums.Designation;
 import com.gaajiFarm.GaajiFarm.util.enums.Gender;
 import com.gaajiFarm.GaajiFarm.util.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,13 +19,15 @@ import java.util.List;
 @Table(name = "staff")
 public class Staff {
     @Id
-    private String staff_id;
+    @Column(name = "staff_id", unique = true, nullable = false)
+    private String staffId;
 
     private String firstName;
 
     private String lastName;
 
-    private String designation;
+  @Enumerated(EnumType.STRING)
+    private Designation designation;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -41,14 +46,25 @@ public class Staff {
 
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private int members;
 
-    @ManyToOne// Reference in Field
-    @JoinColumn(name = "field_code",referencedColumnName = "field_code",insertable = false,updatable = false)
-    private  Field fields;
+    private String fieldCode;
+    private String vCode;
 
 
-    @OneToMany(mappedBy = "assignedStaff")
-    private List<Equpment> equipment;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "staff")
+    private List<Field> filed = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "allocatedStaff")
+    private List<Vehicle> vehicles = new ArrayList<>();
+
+
+
+
+
+
+
+
+
+
 }

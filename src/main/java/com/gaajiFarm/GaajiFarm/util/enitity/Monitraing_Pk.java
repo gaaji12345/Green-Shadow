@@ -3,6 +3,7 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
     27/10/2024
     */
 
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -16,13 +17,10 @@ import java.io.Serializable;
 @Data
 public class Monitraing_Pk implements Serializable {
 
-//        private String logCode;
 
-    private String fieldCode;
+    private String logCode;
 
-
-    private String cropCode;
-
+    private String crop_code;
 
     private String staff_id;
 }

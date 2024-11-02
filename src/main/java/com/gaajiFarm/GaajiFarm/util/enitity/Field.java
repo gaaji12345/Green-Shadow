@@ -3,6 +3,7 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
     27/10/2024
     */
 
+import com.gaajiFarm.GaajiFarm.util.enums.Locations;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,21 +21,28 @@ public class Field {
 
     private String fieldName;
 
-//    @Column(columnDefinition = "geometry(Point, 4326)") // Assuming PostGIS for geographic data
-    private String fieldLocation;
+    @Enumerated(EnumType.STRING)
+    private Locations fieldLocation;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "field")
-    private List<Crop> crops;
+    private Double size;
+
+    @ManyToOne
+    @JoinColumn(name = "crop_code")
+    private Crop crops;
+
+    private String nameOfCrop;
 
 
-    @OneToMany
-    @JoinColumn(name = "staff_id") // This will not create a separate table
-    private List<Staff> staff;
+    @ManyToOne
+    @JoinColumn(name = "staff_id" )// This will not create a separate table
+    private Staff staff;
 
-    @Lob
+
+
+    @Column(name = "field_image1" , columnDefinition = "LONGTEXT")
     private String fieldImage1;
 
-    @Lob
-    @Transient
-    private String fieldImage2;
+
+
+
 }

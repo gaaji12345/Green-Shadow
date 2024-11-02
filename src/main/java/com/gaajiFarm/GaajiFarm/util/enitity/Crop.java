@@ -6,11 +6,16 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Entity
 @Data
 @Table(name = "crops")
 public class Crop {
     @Id
+    @Column(name = "crop_code")
     private String cropCode;
 
     private String cropCommonName;
@@ -22,9 +27,21 @@ public class Crop {
 
     private String category;
 
+    private int qty;
+
     private String cropSeason;
 
-    @ManyToOne
-    @JoinColumn(name = "field_code" , referencedColumnName = "field_code")
-    private Field field;
+    private String fieldCodes;
+
+    private String filedNames;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "crops")
+    private List<Field> filed = new ArrayList<>();
+
+
+
+
+
 }

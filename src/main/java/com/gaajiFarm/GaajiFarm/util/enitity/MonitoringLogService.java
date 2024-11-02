@@ -3,36 +3,34 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
     27/10/2024
     */
 
+import com.gaajiFarm.GaajiFarm.util.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 import java.util.List;
+
 
 @Data
 @Entity
-@IdClass(Monitraing_Pk.class)
 public class MonitoringLogService {
-//    @Id
-//    private String logCode;
-    @Id
-    private String fieldCode;
-   @Id
-    private String cropCode;
-     @Id
-    private String staff_id;
 
+    @Id
      private String logCode;
 
-
-    private LocalDate logDate;
+    private Timestamp logDate;
 
     private String logDetails;
 
-    @Lob
-    private String observedImage;
+    private UserRole role;
+
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "field_code", nullable = false)
+    private Field  field;
 
 
+    @OneToMany(mappedBy = "logService", cascade = CascadeType.ALL)
+    private List<CropDetails> cropDetails;
 
 
 }

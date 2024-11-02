@@ -3,10 +3,10 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
     27/10/2024
     */
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.gaajiFarm.GaajiFarm.util.enums.Fuel;
+import com.gaajiFarm.GaajiFarm.util.enums.Status;
+import com.gaajiFarm.GaajiFarm.util.enums.VTypes;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -17,15 +17,24 @@ public class Vehicle {
 
     private String licensePlateNumber;
 
-    private String vehicleCategory;
+    @Enumerated(EnumType.STRING)
+    private VTypes vehicleCategory;
 
-    private String fuelType;
+    @Enumerated(EnumType.STRING)
+    private Fuel fuelType;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name = "staff_id")
     private Staff allocatedStaff;
 
+
+
     private String remarks;
+
+
+
+
 }

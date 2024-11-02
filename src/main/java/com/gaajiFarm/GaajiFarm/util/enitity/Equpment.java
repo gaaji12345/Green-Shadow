@@ -3,6 +3,8 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
     27/10/2024
     */
 
+import com.gaajiFarm.GaajiFarm.util.enums.EqupmentTypes;
+import com.gaajiFarm.GaajiFarm.util.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,9 +16,13 @@ public class Equpment {
 
     private String name;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private EqupmentTypes type;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    private int equntity;
 
     @ManyToOne
     @JoinColumn(name = "staff_id")
@@ -25,4 +31,6 @@ public class Equpment {
     @ManyToOne
     @JoinColumn(name = "field_code")
     private Field assignedField;
+
+
 }
