@@ -65,3 +65,61 @@ function getAllFileds() {
     });
 
 }
+
+
+function loadAllCropCodes() {
+    $('#cropCode').empty();
+    // return new Promise(function (resolve, reject) {
+    var Cus = '';
+    $.ajax({
+        url: "http://localhost:8080/auth/crop",
+        method: "GET",
+        dataType: "json",//please convert the response into jason
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (resp) {
+
+            for (const customer of resp) {
+                $("#cropCode").empty();
+                Cus += '<option value="' + customer.cropCode + '">' + customer.cropCode+ '</option>';
+
+                console.log(typeof resp);
+                $("#cropCode").append(Cus);
+            }
+            //  btnRowClick();
+            //rowBack();
+        }
+    });
+
+}
+
+
+
+
+function loadAllStaffCodes() {
+    $('#staffId').empty();
+    // return new Promise(function (resolve, reject) {
+    var Cus = '';
+    $.ajax({
+        url: "http://localhost:8080/auth/staff",
+        method: "GET",
+        dataType: "json",//please convert the response into jason
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (resp) {
+
+            for (const customer of resp.data) {
+                $("#staffId").empty();
+                Cus += '<option value="' + customer.staffId + '">' + customer.staffId+ '</option>';
+
+                console.log(typeof resp);
+                $("#staffId").append(Cus);
+            }
+            //  btnRowClick();
+            //rowBack();
+        }
+    });
+
+}
