@@ -25,3 +25,8 @@ $('#filedlink').click(function (){
     $('#maindash').hide();
     $("#fieldmain").show();
 });
+
+$('#staffbtn').click(function (){
+    $('#maindash').hide();
+    $("#staffmain").show();
+});
