@@ -123,3 +123,85 @@ function loadAllStaffCodes() {
     });
 
 }
+
+$('#fieldForm').on('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    var formData = new FormData(this);
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/auth/field/save', // Adjust the URL as per your API
+        data: formData,
+        contentType: false,
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        processData: false,
+        success: function(response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Saved Successfully',
+                text: response.text
+            });
+
+            getAllFileds();
+            clearFields();
+            btnRowClick();
+
+            // loadAllInventory();
+        },
+        error: function(xhr, status, error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'EROOR',
+                text: status,xhr,error
+            });
+        }
+    });
+});
+
+
+$('#deleteFiled').click(function (){
+    let fieldID = $("#fieldCode").val();
+
+    // Check if fieldID is empty
+    if (!fieldID) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Field code is required to delete a field.'
+        });
+        return;
+    }
+
+    $.ajax({
+        url: "http://localhost:8080/auth/field?fCode="+fieldID,
+        method: "DELETE",
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (res) {
+            console.log(res);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Deleted Successfully',
+                text: res.text
+            });
+            clearFields();
+            getAllFileds();
+
+            getNextFiledCode();
+        },
+        error: function (ob, status, t) {
+            console.error("Error deleting field:", status, t);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to delete the field. Please try again.'
+            });
+        }
+    });
+});
