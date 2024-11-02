@@ -1,0 +1,88 @@
+.container {
+    margin-top: 20px;
+    max-width: 90%;
+}
+
+.form-header, .table-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.table-striped > tbody {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+#fieldmain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/login.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/*.table-img {*/
+/*    width: 60px;*/
+/*    height: 60px;*/
+/*    object-fit: cover;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+#fieldCode,#fieldName,#fieldLocation,#size,#cropCode,#nameOfCrop,#staffId,#fieldImage1{
+    border: 2px solid black; /* Black border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 8px; /* Inner padding for comfortable text entry */
+    outline: none; /* Remove default outline on focus */
+    box-sizing: border-box;
+    cursor: pointer;
+
+}
+
+#fieldCode:focus,
+#fieldName:focus,
+#fieldLocation:focus,
+#size:focus,
+#cropCode:focus,
+#nameOfCrop:focus,
+#staffId:focus,
+#fieldImage1:focus {
+    border-color: #333; /* Darker border on focus */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow on focus */
+}
+
+
+/* Hide the actual file input */
+.file-input {
+    display: none;
+}
+
+/* Style the icon as a clickable button */
+.upload-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    background-color: #e7dbdb; /* Light background */
+    border-radius: 50%; /* Circle shape */
+    border: 2px solid #ccc; /* Light border */
+    cursor: pointer;
+}
+
+.upload-icon i {
+    font-size: 24px; /* Adjust icon size */
+    color: #333; /* Icon color */
+}
+
+/* Add hover effect to the icon */
+.upload-icon:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+    border-color: #999; /* Darker border on hover */
+}
+
