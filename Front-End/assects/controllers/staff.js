@@ -2,6 +2,7 @@ getAllStaff();
 loadAllfiledCodes();
 loadAllVCodes();
 getNextStaffCode();
+btnRowClickStaff();
 
 
 function getNextStaffCode(){
@@ -111,3 +112,34 @@ function loadAllVCodes() {
     });
 
 }
+
+function btnRowClickStaff() {
+    $('#staffTable').on('click', 'tr', function() {
+        var headers = $(this).children('th'); // Select header cells for `staffId1`
+        var cells = $(this).children('td');    // Select data cells for other fields
+        $('#staffId1').val(headers.eq(0).text()); // staffId1 from <th>
+        $('#firstName').val(cells.eq(0).text());  // First Name
+        $('#lastName').val(cells.eq(1).text());   // Last Name
+        $('#designation').val(cells.eq(2).text()); // Designation
+        $('#gender').val(cells.eq(3).text());      // Gender
+        $('#joinedDate').val(cells.eq(4).text()); // Date of Joining
+        $('#dob').val(cells.eq(5).text()); // Attached Branch
+        $('#addressLine1').val(cells.eq(6).text()); // Address Line 1
+        $('#addressLine2').val(cells.eq(7).text()); // Address Line 2
+        $('#addressLine3').val(cells.eq(8).text()); // Address Line 3
+        $('#addressLine4').val(cells.eq(9).text()); // Address Line 4
+        $('#addressLine5').val(cells.eq(10).text()); // Address Line 5
+        $('#contactNo').val(cells.eq(11).text()); // Contact No
+        $('#email1').val(cells.eq(12).text()); // Email
+        $('#members').val(cells.eq(13).text()); // Emergency Contact
+        $('#fieldCode1').val(cells.eq(14).text()); // Emergency Contact Person
+        $('#vCode').val(cells.eq(15).text()); // Vehicle Code
+
+        // Optionally show the form if it’s hidden
+        // $('#mainEmployee').show();
+    });
+}
+
+
+
+
