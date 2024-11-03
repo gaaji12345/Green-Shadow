@@ -1,4 +1,21 @@
 getAllStaff();
+loadAllfiledCodes();
+loadAllVCodes();
+getNextStaffCode();
+
+
+function getNextStaffCode(){
+    $.ajax({
+        url:'http://localhost:8080/auth/staff/nextId',
+        method:'GET',
+        contentType: 'application/json',
+
+        success: function(resp){
+            console.log(resp);
+            $('#staffId1').val(resp)
+        }
+    });
+}
 function getAllStaff() {
 
 
@@ -38,5 +55,59 @@ function getAllStaff() {
         }
 
     });
-    btnRowClick();
+
+}
+
+function loadAllfiledCodes() {
+    $("#fieldCode1").empty();
+    // return new Promise(function (resolve, reject) {
+    var Cus = '';
+    $.ajax({
+        url: "http://localhost:8080/auth/field",
+        method: "GET",
+        dataType: "json",//please convert the response into jason
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (resp) {
+
+            for (const customer of resp.data) {
+                $("#fieldCode1").empty();
+                Cus += '<option value="' + customer.fieldCode + '">' + customer.fieldCode+ '</option>';
+
+                console.log(typeof resp);
+                $("#fieldCode1").append(Cus);
+            }
+            //  btnRowClick();
+            //rowBack();
+        }
+    });
+
+}
+
+function loadAllVCodes() {
+    $("#vCode").empty();
+    // return new Promise(function (resolve, reject) {
+    var Cus = '';
+    $.ajax({
+        url: "http://localhost:8080/auth/car",
+        method: "GET",
+        dataType: "json",//please convert the response into jason
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (resp) {
+
+            for (const customer of resp.data) {
+                $("#vCode").empty();
+                Cus += '<option value="' + customer.vehicleCode + '">' + customer.vehicleCode+ '</option>';
+
+                console.log(typeof resp);
+                $("#vCode").append(Cus);
+            }
+            //  btnRowClick();
+            //rowBack();
+        }
+    });
+
 }
