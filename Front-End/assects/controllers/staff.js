@@ -155,6 +155,43 @@ $('#deletestaffbtn').click(function (){
     })
 });
 
+$('#updatestaffbtn').click(function() {
+    // Create a JSON object from the form data
+    var formData = $("#staffForm").serializeArray();
+    var data = {};
+    $(formData).each(function(index, obj) {
+        data[obj.name] = obj.value;
+    });
+
+    console.log('Data to update:', data);
+    console.log('Token:', token);
+
+    $.ajax({
+        url: 'http://localhost:8080/auth/staff/update', // Update endpoint URL
+        method: "PUT",
+        contentType: 'application/json', // Specify content type
+        data: JSON.stringify(data), // Convert data to JSON string
+        success: function(res) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Updated Successfully',
+                text: 'Staff details updated successfully'
+            });
+            getAllStaff(); // Refresh the list after update
+            // clearFields(); // Optionally clear form fields
+        },
+        error: function(ob, txtStatus, error) {
+            alert(txtStatus);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: ob.responseText // Show the error response text
+            });
+        }
+    });
+});
+
+
 function loadAllVCodes() {
     $("#vCode").empty();
     // return new Promise(function (resolve, reject) {
