@@ -82,6 +82,48 @@ function loadAllSCodes() {
 }
 
 
+$('#saveVbtn').click(function() {
+    // Create a JSON object from the form data
+    var formData = $("#vehicleForm").serializeArray();
+    var data = {};
+    $(formData).each(function(index, obj) {
+        data[obj.name] = obj.value;
+    });
+
+    console.log(data);
+    console.log('Token:', token);
+
+    $.ajax({
+        url: 'http://localhost:8080/auth/car', // Make sure this matches your controller endpoint
+        method: "POST",
+        contentType: 'application/json', // Specify content type
+        data: JSON.stringify(data), // Convert data to JSON string
+        success: function(res) {
+
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Saved Successfully',
+                text: res.text
+            });
+            getAllV();
+            clearFieldsV();
+            // clearFieldsStaff();
+            // clearFeilds();
+        },
+        error: function(ob, txtStatus, error) {
+            alert(txtStatus);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: ob.responseText // Show the error response text
+            });
+        }
+    });
+});
+
+
+
 $(document).ready(function() {
     // Define license plate prefixes for each vehicle category
     const licensePrefixes = {
@@ -117,4 +159,21 @@ function btnRowClickV() {
         // Optionally show the form if it’s hidden
         // $('#mainEmployee').show();
     });
+}
+
+
+
+
+
+function clearFieldsV() {
+    $('#vehicleCode').val('');
+    $('#licensePlateNumber').val('');
+    $('#vehicleCategory').val('');
+    $('#fuelType').val('');
+    $('#status').val('');
+    $('#allocatedStaffId').val('');
+    $('#remarks').val('');
+   
+    getNextVcodes();
+    $('#vehicleCode').focus();
 }
