@@ -51,3 +51,23 @@ function getAllV() {
     });
 
 }
+
+
+$(document).ready(function() {
+    // Define license plate prefixes for each vehicle category
+    const licensePrefixes = {
+        CAR: "CAX-1236",
+        TRUCK: "TRK-4561",
+        TRACTOR: "TRAC-3310",
+        VAN: "VN-7898",
+        SUV: "SUV-0121",
+        CRANE: "CRI-210"
+    };
+
+    // When vehicle category changes, update license plate number
+    $("#vehicleCategory").change(function() {
+        const selectedCategory = $(this).val();
+        const licensePlate = licensePrefixes[selectedCategory] || "";
+        $("#licensePlateNumber").val(licensePlate);
+    });
+});
