@@ -123,6 +123,90 @@ $('#saveVbtn').click(function() {
 });
 
 
+$('#deleteVbtn').click(function (){
+    let vCode = $("#vehicleCode").val();
+
+    // Check if fieldID is empty
+    if (!vCode) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Vcode code is required to delete a field.'
+        });
+        return;
+    }
+
+    $.ajax({
+        url: "http://localhost:8080/auth/car?vCode="+vCode,
+        method: "DELETE",
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (res) {
+            console.log(res);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Deleted Successfully',
+                text: res.text
+            });
+            clearFieldsV();
+            getAllV();
+
+
+
+        },
+        error: function (ob, status, t) {
+            console.error("Error deleting field:", status, t);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Vehcile to delete the field. Please try again.'
+            });
+        }
+    });
+});
+
+$('#updateVbtn').click(function() {
+    // Create a JSON object from the form data
+    var formData = $("#vehicleForm").serializeArray();
+    var data = {};
+    $(formData).each(function(index, obj) {
+        data[obj.name] = obj.value;
+    });
+
+    console.log('Data to update:', data);
+    console.log('Token:', token);
+
+    $.ajax({
+        url: 'http://localhost:8080/auth/car/update', // Update endpoint URL
+        method: "PUT",
+        contentType: 'application/json', // Specify content type
+        data: JSON.stringify(data), // Convert data to JSON string
+        success: function(res) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Updated Successfully',
+                text: 'Vehicle details updated successfully'
+            });
+            getAllV();// Refresh the list after update
+            // clearFields(); // Optionally clear form fields
+            clearFieldsV();
+        },
+        error: function(ob, txtStatus, error) {
+            alert(txtStatus);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: ob.responseText // Show the error response text
+            });
+        }
+    });
+});
+
+
+
 
 $(document).ready(function() {
     // Define license plate prefixes for each vehicle category
@@ -173,7 +257,7 @@ function clearFieldsV() {
     $('#status').val('');
     $('#allocatedStaffId').val('');
     $('#remarks').val('');
-   
+
     getNextVcodes();
     $('#vehicleCode').focus();
 }
