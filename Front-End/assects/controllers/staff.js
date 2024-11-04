@@ -5,6 +5,7 @@ getNextStaffCode();
 btnRowClickStaff();
 
 
+
 function getNextStaffCode(){
     $.ajax({
         url:'http://localhost:8080/auth/staff/nextId',
@@ -85,6 +86,7 @@ $('#savestaffbtn').click(function() {
                 text: res.text
             });
            getAllStaff();
+           clearFieldsStaff();
             // clearFeilds();
         },
         error: function(ob, txtStatus, error) {
@@ -136,12 +138,13 @@ $('#deletestaffbtn').click(function (){
         success:function (res) {
             console.log(res)
            getAllStaff();
+            clearFieldsStaff();
 
 
             Swal.fire({
                 icon: 'success',
                 title: 'Delete Successfully',
-                text: res
+                text: res.text
             });
 
 
@@ -179,6 +182,7 @@ $('#updatestaffbtn').click(function() {
             });
             getAllStaff(); // Refresh the list after update
             // clearFields(); // Optionally clear form fields
+            clearFieldsStaff();
         },
         error: function(ob, txtStatus, error) {
             alert(txtStatus);
@@ -248,4 +252,26 @@ function btnRowClickStaff() {
 
 
 
+
+function clearFieldsStaff() {
+    $('#staffId1').val('');
+    $('#firstName').val('');
+    $('#lastName').val('');
+    $('#designation').val('');
+    $('#gender').val('');
+    $('#joinedDate').val('');
+    $('#dob').val('');
+    $('#addressLine1').val('');
+    $('#addressLine2').val('');
+    $('#addressLine3').val('');
+    $('#addressLine4').val('');
+    $('#addressLine5').val('');
+    $('#contactNo').val('');
+    $('#email1').val('');
+    $('#members').val('');
+    $('#fieldCode1').val('');
+    $('#vCode').val('');
+    getNextStaffCode();
+    $("#staffId1").focus();
+}
 
