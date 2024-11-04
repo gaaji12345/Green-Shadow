@@ -1,5 +1,7 @@
 getAllV();
 getNextVcodes();
+btnRowClickV();
+loadAllSCodes();
 
 function getNextVcodes(){
     $.ajax({
@@ -52,6 +54,33 @@ function getAllV() {
 
 }
 
+function loadAllSCodes() {
+    $('#staffId').empty();
+    // return new Promise(function (resolve, reject) {
+    var Cus = '';
+    $.ajax({
+        url: "http://localhost:8080/auth/staff",
+        method: "GET",
+        dataType: "json",//please convert the response into jason
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (resp) {
+
+            for (const customer of resp.data) {
+                $("#allocatedStaffId").empty();
+                Cus += '<option value="' + customer.staffId + '">' + customer.staffId+ '</option>';
+
+                console.log(typeof resp);
+                $("#allocatedStaffId").append(Cus);
+            }
+            //  btnRowClick();
+            //rowBack();
+        }
+    });
+
+}
+
 
 $(document).ready(function() {
     // Define license plate prefixes for each vehicle category
@@ -71,3 +100,21 @@ $(document).ready(function() {
         $("#licensePlateNumber").val(licensePlate);
     });
 });
+
+function btnRowClickV() {
+    $('#vTable').on('click', 'tr', function() {
+        var headers = $(this).children('th'); // Select header cells for `staffId1`
+        var cells = $(this).children('td');    // Select data cells for other fields
+        $('#vehicleCode').val(headers.eq(0).text()); // staffId1 from <th>
+        $('#licensePlateNumber').val(cells.eq(0).text());  // First Name
+        $('#vehicleCategory').val(cells.eq(1).text());   // Last Name
+        $('#fuelType').val(cells.eq(2).text()); // Designation
+        $('#status').val(cells.eq(3).text());      // Gender
+        $('#allocatedStaffId').val(cells.eq(4).text()); // Date of Joining
+        $('#remarks').val(cells.eq(5).text()); // Attached Branch
+
+
+        // Optionally show the form if it’s hidden
+        // $('#mainEmployee').show();
+    });
+}
