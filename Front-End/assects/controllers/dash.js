@@ -28,5 +28,18 @@ $('#filedlink').click(function (){
 
 $('#staffbtn').click(function (){
     $('#maindash').hide();
-    $("#staffmain").show();
+        $("#staffmain").show();
 });
+
+
+$('#vBtn').click(function (){
+    $('#maindash').hide();
+    $("#vmain").show();
+});
+
+
+$('#eqlink').click(function (){
+    $('#maindash').hide();
+    $("#eqmian").show();
+});
+
