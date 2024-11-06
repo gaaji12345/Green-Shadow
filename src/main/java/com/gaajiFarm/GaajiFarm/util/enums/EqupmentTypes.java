@@ -4,6 +4,8 @@ package com.gaajiFarm.GaajiFarm.util.enums;/*  gaajiCode
     */
 
 public enum EqupmentTypes {
-    ROLES,PLOUGH,AXE,CHAINSHAW,SEEDER,SHOVEL
+//    ROLES,PLOUGH,AXE,CHAINSHAW,SEEDER,SHOVEL
+
+    ELECTRICAL,MECHANICAL
 
 }
