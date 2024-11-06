@@ -2,6 +2,7 @@ getNextEcodes();
 getAllEQ();
 loadAllfiledCodesEq();
 loadAllSCodesEq();
+btnRowClickE();
 
 
 function getNextEcodes(){
@@ -142,6 +143,69 @@ $('#saveEq').click(function() {
                 icon: 'error',
                 title: 'Error',
                 text: ob.responseText // Show the error response text
+            });
+        }
+    });
+});
+
+function btnRowClickE() {
+    $('#eqTable').on('click', 'tr', function() {
+        var headers = $(this).children('th'); // Select header cells for `staffId1`
+        var cells = $(this).children('td');    // Select data cells for other fields
+        $('#equipmentId').val(headers.eq(0).text()); // staffId1 from <th>
+        $('#name1').val(cells.eq(0).text());  // First Name
+        $('#type').val(cells.eq(1).text());   // Last Name
+        $('#status1').val(cells.eq(2).text()); // Designation
+        $('#quantity').val(cells.eq(3).text());      // Gender
+        $('#assignedStaffId').val(cells.eq(4).text()); // Date of Joining
+        $('#assignedFieldCode').val(cells.eq(5).text()); // Attached Branch
+
+
+        // Optionally show the form if it’s hidden
+        // $('#mainEmployee').show();
+    });
+}
+
+$('#deleteEq').click(function (){
+    let eCode = $("#equipmentId").val();
+
+    // Check if fieldID is empty
+    if (!eCode) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ecode code is required to delete a field.'
+        });
+        return;
+    }
+
+    $.ajax({
+        url: "http://localhost:8080/auth/eq?eCode="+eCode,
+        method: "DELETE",
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (res) {
+            console.log(res);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Deleted Successfully',
+                text: res.text
+            });
+          clearFieldsEq();
+          getAllEQ();
+
+
+
+        },
+        error: function (ob, status, t) {
+            console.error("Error deleting field:", status, t);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Eqipment to delete the field. Please try again.'
             });
         }
     });
