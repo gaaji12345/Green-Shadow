@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assects/styles/user.css">
     <link rel="stylesheet" href="assects/styles/filed.css">
     <link rel="stylesheet" href="assects/styles/staff.css">
+    <link rel="stylesheet" href="assects/styles/vehcile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -167,14 +168,14 @@
             </div>
             <div class="col-6 col-md-3 icon-container">
                 <a  class="icon-box">
-                    <i class="fas fa-chart-line icon" id="inlink"></i>
-                    <div class="home">Inventory</div>
+                    <i class="fas fa-chart-line icon" id="eqlink"></i>
+                    <div class="home">EQIPEMNET</div>
                 </a>
             </div>
             <div class="col-6 col-md-3 icon-container">
-                <a href="page6.html" class="icon-box">
-                    <i class="fas fa-bell icon"></i>
-                    <div class="home">Notifications</div>
+                <a  class="icon-box">
+                    <i class="fas fa-bell icon"  id="vBtn" ></i>
+                    <div class="home">VEHICLE</div>
                 </a>
             </div>
             <div class="col-6 col-md-3 icon-container">
@@ -423,30 +424,62 @@
 
                     </div>
 
+
+                    <div class="col-md-6 mb-3">
+                        <label for="dob">Address Line 2</label>
+                        <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2" required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="dob">Address Line 3</label>
+                        <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3" required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="dob">Address Line 4</label>
+                        <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4" required>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="dob">Address Line 1</label>
+                        <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5" required>
+
+                    </div>
+
+
+
                 </div>
             </div>
 
             <!-- Address Section -->
-            <div class="form-section">
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4">
+<!--            <div class="form-section">-->
 
-                    </div>
 
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5">
-                    </div>
-                </div>
-            </div>
+
+
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--                <div class="form-group col-md-6">-->
+<!--                    <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2">-->
+<!--                </div>-->
+<!--                <div class="form-group col-md-6">-->
+<!--                    <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="form-group col-md-6">-->
+<!--                    <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4">-->
+
+<!--                </div>-->
+
+<!--                <div class="form-group col-md-6">-->
+<!--                    <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5">-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!-- Contact Information Section -->
             <div class="form-section">
@@ -470,7 +503,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="vCode">V Code</label>
-                        <select class="form-control" id="vCode" name="vCode">
+                        <select class="form-control" id="vCode" name="vcode">
                             <option value="">Select V Code</option>
                             <!-- Add options dynamically as needed -->
                         </select>
@@ -484,7 +517,10 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-outline-primary" id="savestaffbtn">SAVE</button>
+            <!--            <button type="button" class="btn btn-outline-secondary">Secondary</button>-->
+            <button type="button" class="btn btn-outline-success" id="updatestaffbtn">UPDATE</button>
+            <button type="button" class="btn btn-outline-danger" id="deletestaffbtn">DELETE</button>
         </form>
 
         <!-- Display Table -->
@@ -520,6 +556,185 @@
     </div>
 </section>
 
+<section id="vmain" style="display: none">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Vehicle Management</h2>
+
+        <!-- Form for Vehicle Details -->
+        <form id="vehicleForm">
+            <div class="row">
+                <div class="col-md-6 mb-3" id="vcodecss">
+                    <label for="vehicleCode">vehicleCode</label>
+                    <input type="text" class="form-control" id="vehicleCode" name="vehicleCode" required>
+                    <span>Vehicle-Code</span>
+                    <i></i>
+                </div>
+
+                <div class="col-md-6 mb-3" id="lnmbcss">
+                    <div class="lnmb2">
+                        <input type="licensePlateNumber" class="form-control" id="licensePlateNumber" name="licensePlateNumber" required>
+                        <div class="labelclass"> L-Number</div>
+                    </div>
+<!--                    <label for="licensePlateNumber">LicensePlateNmb</label>-->
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="vehicleCategory">Vehicle Category</label>
+                    <select class="form-control" id="vehicleCategory" name="vehicleCategory">
+                        <option>Select Category</option>
+                        <!-- Populate options dynamically -->
+                        <option value="CAR">CAR</option>
+                        <option value="TRUCK">TRUCK</option>
+                        <option value="TRACTOR">TRACTOR</option>
+                        <option value="VAN">VAN</option>
+                        <option value="SUV">SUV</option>
+                        <option value="CRANE">CRANE</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="fuelType">Fuel Type</label>
+                    <select class="form-control" id="fuelType" name="fuelType">
+                        <option>Select Fuel Type</option>
+                        <!-- Populate options dynamically -->
+                        <option value="PETROL">PETROL</option>
+                        <option value="DIESEL">DIESEL</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status" name="status">
+                        <option>Select Status</option>
+                        <!-- Populate options dynamically -->
+                        <option value="ACTIVE">ACTIVE</option>
+                        <option value="NOT">NOT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="allocatedStaffId">Allocated Staff ID</label>
+                    <select class="form-control" id="allocatedStaffId" name="allocatedStaffId">
+                        <option>Select Staff</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="remarks">Remarks</label>
+                    <input type="text" class="form-control" id="remarks" name="remarks" placeholder="Enter remarks">
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-primary" id="saveVbtn">SAVE</button>
+            <!--            <button type="button" class="btn btn-outline-secondary">Secondary</button>-->
+            <button type="button" class="btn btn-outline-success" id="updateVbtn">UPDATE</button>
+            <button type="button" class="btn btn-outline-danger" id="deleteVbtn">DELETE</button>
+        </form>
+
+        <!-- Table for displaying vehicle details -->
+        <table class="table table-bordered table-striped mt-5" id="vTable">
+            <thead class="thead-dark">
+            <tr>
+                <th>Vehicle Code</th>
+                <th>License Plate Number</th>
+                <th>Vehicle Category</th>
+                <th>Fuel Type</th>
+                <th>Status</th>
+                <th>Allocated Staff ID</th>
+                <th>Remarks</th>
+            </tr>
+            </thead>
+            <tbody id="vTbody">
+            <!-- Sample row, dynamically populate rows based on data -->
+            <tr>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="eqmian" style="display: none">
+
+    <div class="container" style="margin-top: 100px">
+        <h2>Equipment Management</h2>
+        <!-- Form for Equipment Entry -->
+        <form id="equipmentForm">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="equipmentId">Equipment ID</label>
+                    <input type="text" class="form-control" id="equipmentId" name="equipmentId" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name1" name="name" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="type">Type</label>
+                    <select class="form-control" id="type" name="type" required>
+                        <option value="ELECTRICAL">ELECTRICAL</option>
+                        <option value="MECHANICAL">MECHANICAL</option>
+
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status1" name="status" required>
+                        <option value="AVAILABLE">AVAILABLE</option>
+                        <option value="NOT">NOT</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="equantity" required>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label for="assignedStaffId">Assigned Staff</label>
+                    <select class="form-control" id="assignedStaffId" name="assignedStaffId" required>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="assignedFieldCode">Assigned Field Code</label>
+                    <select class="form-control" id="assignedFieldCode" name="assignedFieldCode" required>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary mt-4" id="saveEq">Add Equipment</button>
+                    <!-- Update Equipment Button -->
+                    <button type="button" class="btn btn-warning mt-4" id="updateEq">Update </button>
+
+                    <!-- Delete Equipment Button -->
+                    <button type="button" class="btn btn-danger mt-4" id="deleteEq">Delete </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Table to display equipment data -->
+        <div class="table-container">
+            <h3>Equipment List</h3>
+            <table class="table table-bordered" id="eqTable">
+                <thead>
+                <tr>
+                    <th>Equipment ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Quantity</th>
+                    <th>Assigned Staff</th>
+                    <th>Assigned Field Code</th>
+                </tr>
+                </thead>
+                <tbody id="equipmentTableBody">
+                <!-- Dynamic rows will be added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+
 
 
 <script src="assects/jquery-3.7.1.min.js"></script>
@@ -529,7 +744,9 @@
 <script src="assects/controllers/users.js"></script>
 <script src="assects/controllers/test.js"></script>
 <script src="assects/controllers/field.js"></script>
-<script src="assects/controllers/new.js"></script>
+<script src="assects/controllers/staff.js"></script>
+<script src="assects/controllers/vehicle.js"></script>
+<script src="assects/controllers/eq.js"></script>
 
 </body>
 </html>
