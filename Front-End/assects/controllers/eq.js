@@ -1,5 +1,7 @@
 getNextEcodes();
 getAllEQ();
+loadAllfiledCodesEq();
+loadAllSCodesEq();
 
 
 function getNextEcodes(){
@@ -50,3 +52,62 @@ function getAllEQ() {
     });
 
 }
+
+function loadAllfiledCodesEq() {
+    $("#assignedFieldCode").empty();
+    // return new Promise(function (resolve, reject) {
+    var Cus = '';
+    $.ajax({
+        url: "http://localhost:8080/auth/field",
+        method: "GET",
+        dataType: "json",//please convert the response into jason
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (resp) {
+
+            for (const customer of resp.data) {
+                $("#assignedFieldCode").empty();
+                Cus += '<option value="' + customer.fieldCode + '">' + customer.fieldCode+ '</option>';
+
+                console.log(typeof resp);
+                $("#assignedFieldCode").append(Cus);
+            }
+            //  btnRowClick();
+            //rowBack();
+        }
+    });
+
+}
+
+function loadAllSCodesEq() {
+    $('#assignedStaffId').empty();
+    // return new Promise(function (resolve, reject) {
+    var Cus = '';
+    $.ajax({
+        url: "http://localhost:8080/auth/staff",
+        method: "GET",
+        dataType: "json",//please convert the response into jason
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (resp) {
+
+            for (const customer of resp.data) {
+                $("#assignedStaffId").empty();
+                Cus += '<option value="' + customer.staffId + '">' + customer.staffId+ '</option>';
+
+                console.log(typeof resp);
+                $("#assignedStaffId").append(Cus);
+            }
+            //  btnRowClick();
+            //rowBack();
+        }
+    });
+
+}
+
+
+
+
+
