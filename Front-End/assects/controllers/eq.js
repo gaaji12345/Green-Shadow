@@ -108,6 +108,60 @@ function loadAllSCodesEq() {
 }
 
 
+$('#saveEq').click(function() {
+    // Create a JSON object from the form data
+    var formData = $("#equipmentForm").serializeArray();
+    var data = {};
+    $(formData).each(function(index, obj) {
+        data[obj.name] = obj.value;
+    });
+
+    console.log(data);
+    console.log('Token:', token);
+
+    $.ajax({
+        url: 'http://localhost:8080/auth/eq', // Make sure this matches your controller endpoint
+        method: "POST",
+        contentType: 'application/json', // Specify content type
+        data: JSON.stringify(data), // Convert data to JSON string
+        success: function(res) {
+
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Saved Successfully',
+                text: res.text
+            });
+            getAllEQ();
+            clearFieldsEq();
+
+        },
+        error: function(ob, txtStatus, error) {
+            alert(txtStatus);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: ob.responseText // Show the error response text
+            });
+        }
+    });
+});
+
+
+function clearFieldsEq() {
+    $('#equipmentId').val('');
+    $('#name1').val('');
+    $('#type').val('');
+    $('#status1').val('');
+    $('#quantity').val('');
+    $('#assignedStaffId').val('');
+    $('#assignedFieldCode').val('');
+
+
+   getNextEcodes();
+    $('#equipmentId').focus();
+}
+
 
 
 
