@@ -96,3 +96,41 @@ function getAllCrops() {
 }
 
 
+$('#cropForm').on('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+    const token = localStorage.getItem('jwtToken');
+
+    var formData = new FormData(this);
+
+    // Log formData contents to see if everything is correct
+    for (let pair of formData.entries()) {
+        console.log(pair[0]+ ': '+ pair[1]);
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/api/v2/crop',
+        data: formData,
+        contentType: false,   // Tell jQuery not to set Content-Type, as it's automatically handled by FormData
+        processData: false,   // Don't let jQuery process the data, as FormData does this natively
+        headers: {
+            "Authorization": `Bearer ${token}`  // Add the JWT token to the Authorization header
+        },
+        success: function(response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Saved Successfully',
+                text: response.text
+            });
+            getAllCrops();
+        },
+        error: function(xhr, status, error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: "NOT SAVED"
+            });
+            console.error(error);
+        }
+    });
+});
