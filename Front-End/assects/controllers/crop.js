@@ -228,3 +228,55 @@ function clearFieldsCrops() {
    getNextCropCode();
     $('#cropCode1').focus();
 }
+
+$('#updaeCropbutton').on('click', function(e) {
+    e.preventDefault(); // Prevent form submission on button click
+
+    const token = localStorage.getItem('jwtToken');
+    const cropCode = $('#cropCode1').val(); // Get the crop code from the input field
+
+    if (!cropCode) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Crop Code Required',
+            text: 'Please enter the crop code to update.'
+        });
+        return;
+    }
+
+    var formData = new FormData($('#cropForm')[0]);
+
+    // Log form data contents for debugging
+    for (let pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    }
+
+    $.ajax({
+        type: 'PUT',
+        url: `http://localhost:8080/api/v2/crop/${cropCode}`, // Use the cropCode for the specific update
+        data: formData,
+        contentType: false,   // Let FormData handle the content type automatically
+        processData: false,   // Don't process data as jQuery normally does
+        headers: {
+            "Authorization": `Bearer ${token}` // Include JWT token for authorization
+        },
+        success: function(response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Updated Successfully',
+                text: response.text || 'Crop updated successfully.'
+            });
+            clearFieldsCrops(); // Clear the form fields (assuming this function is defined)
+            getAllCrops(); // Reload crops (assuming this function is defined)
+        },
+        error: function(xhr, status, error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: xhr.responseText || "Failed to update crop."
+            });
+            console.error(error);
+        }
+    });
+});
+
