@@ -5,6 +5,7 @@ package com.gaajiFarm.GaajiFarm.controller;/*  gaajiCode
 
 import com.gaajiFarm.GaajiFarm.dtos.MonitorlogDTO;
 import com.gaajiFarm.GaajiFarm.service.impl.MonitorlogServiceIMPL;
+import com.gaajiFarm.GaajiFarm.util.enitity.Crop;
 import com.gaajiFarm.GaajiFarm.util.enitity.MonitoringLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,4 +40,15 @@ public class MonitorlogController {
         // Return the list of MonitorlogDTOs wrapped in a ResponseEntity with an OK status
         return ResponseEntity.ok(logs);
     }
+    
+
+    @GetMapping("/most-used")
+    public String getMostUsedCrop() {
+        Crop mostUsedCrop = monitorlogServiceIMPL.findMostUsedCrop();
+        if (mostUsedCrop == null) {
+            throw new NullPointerException("Most used crop not found.");
+        }
+        return mostUsedCrop.getCropCode(); // Only returning cropCode
+    }
+
 }

@@ -15,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -202,6 +204,39 @@ public class MonitorlogServiceIMPL {
 
         // Save the updated MonitoringLogService (this ensures the logCode and related data are saved)
         monitoringLogRepository.save(logService);  // Save the MonitoringLogService to the DB
+    }
+
+    @Transactional(readOnly = true)
+    public Crop findMostUsedCrop() {
+        // Fetch all CropDetails records
+        List<CropDetails> cropDetailsList = cropDetailRepo.findAll();
+
+        // Map to store crop codes and their corresponding counts
+        Map<String, Integer> cropCountMap = new HashMap<>();
+
+        // Iterate through CropDetails and count the occurrences of each crop
+        for (CropDetails cropDetails : cropDetailsList) {
+            String cropCode = cropDetails.getCrop_code();
+            cropCountMap.put(cropCode, cropCountMap.getOrDefault(cropCode, 0) + cropDetails.getQuantity());
+        }
+
+        // Find the crop code with the maximum count
+        String mostUsedCropCode = null;
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> entry : cropCountMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostUsedCropCode = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
+
+        // Fetch the Crop entity based on the most used crop code
+        if (mostUsedCropCode != null) {
+            return cropRepo.findById(mostUsedCropCode)
+                    .orElseThrow(() -> new IllegalArgumentException("Most used crop not found"));
+        }
+
+        return null; // or throw an exception if no crop is found
     }
 
 
