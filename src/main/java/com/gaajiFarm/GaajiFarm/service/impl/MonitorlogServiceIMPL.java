@@ -12,7 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MonitorlogServiceIMPL {
@@ -88,6 +92,39 @@ public class MonitorlogServiceIMPL {
 //        monitoringLogRepository.save(logService);
 //    }
 
+
+
+
+    public List<MonitorlogDTO> getAllMonitoringLogs() {
+        // Fetch all MonitoringLogService records from the repository
+        List<MonitoringLogService> logs = monitoringLogRepository.findAll();
+
+        // Convert the list of entities to DTOs
+        return logs.stream().map(log -> {
+            // Create the DTO
+            MonitorlogDTO dto = new MonitorlogDTO();
+            dto.setLogCode(log.getLogCode());
+            dto.setLogDate(LocalDate.parse(log.getLogDate().toString()));  // Assuming logDate is a Timestamp or LocalDateTime
+            dto.setLogDetails(log.getLogDetails());
+            dto.setRole(log.getRole().name());  // Convert role to a string if it's an enum
+            dto.setFieldCode(log.getField().getFieldCode());  // Assuming Field entity has a fieldCode attribute
+
+            // Map CropDetails to DTOs
+            List<CropDetailDTO> cropDetailsDTOs = log.getCropDetails().stream().map(cropDetail -> {
+                CropDetailDTO cropDetailDTO = new CropDetailDTO();
+                cropDetailDTO.setLogCode(cropDetail.getLogCode());
+                cropDetailDTO.setCropCode(cropDetail.getCrop_code());
+                cropDetailDTO.setStaffId(cropDetail.getStaff_id());
+                cropDetailDTO.setQuantity(cropDetail.getQuantity());
+                cropDetailDTO.setMembersInStaff(cropDetail.getMembersInStaff());
+                return cropDetailDTO;
+            }).collect(Collectors.toList());
+
+            dto.setCropDetails(cropDetailsDTOs);  // Set the list of CropDetailDTOs
+
+            return dto;
+        }).collect(Collectors.toList());
+    }
 
 
     @Transactional
