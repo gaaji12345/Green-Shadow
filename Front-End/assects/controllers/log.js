@@ -3,6 +3,8 @@ loadlogCode('LOG-'); // Replace 'IIM' with your desired prefix
 loadAllCropCodesLogs();
 loadAllfiledCodesLogs();
 loadAllStaffCodeslog();
+fetchLogDetails();
+
 
 // Function to generate and load inventory code
 function loadlogCode(prefix) {
@@ -108,4 +110,160 @@ function loadAllStaffCodeslog() {
     });
 
 }
+
+
+$('#btnaddcrop').click(function () {
+
+    const cropCode = $('#cropCodeDesc').val();
+    const staffId = $('#staffCode2').val();
+    const quantity = $('#qunity').val();
+    const members = $('#memebers').val();
+
+    // Validate the input fields
+    if (!cropCode || !staffId || !quantity || !members) {
+        alert("Please fill in all fields before adding crop details.");
+        return;
+    }
+
+    // Push the new crop details into the cropDetails array
+    cropDetails.push({
+        cropCode: cropCode,
+        staffId: staffId,
+        quantity: quantity,
+        membersInStaff: members
+    });
+
+    // Clear the input fields
+    $('#cropCodeDesc').val('');
+    $('#staffCode2').val('');
+    $('#qunity').val('');
+    $('#memebers').val('');
+
+    // Add crop detail row to the table
+    const row = `
+      <tr>
+        <td>${cropCode}</td>
+        <td>${staffId}</td>
+        <td>${quantity}</td>
+        <td>${members}</td>
+      </tr>
+    `;
+    $('#tableDetails').append(row);
+});
+let cropDetails = [];
+// Handle the Submit button click
+$('#btnsumbit').click(function () {
+    const token = localStorage.getItem('jwtToken');
+    // Collect the form data
+    const logCode = $('#logcode').val();
+    const logDate = $('#logdate').val();
+    const logDetails = $('#logdetail').val();
+    const role = $('#roleSelector').val();
+    const fieldCode = $('#fieldCode2').val();
+
+    // Validate the form fields
+    if (!logCode || !logDate || !logDetails || !role || !fieldCode || cropDetails.length === 0) {
+        alert("Please fill in all the fields and add at least one crop detail.");
+        return;
+    }
+
+    // Prepare the request data
+    const monitorlogDTO = {
+        logCode: logCode,
+        logDate: logDate,
+        logDetails: logDetails,
+        role: role,
+        fieldCode: fieldCode,
+        cropDetails: cropDetails
+    };
+
+    // AJAX request to submit data to the backend
+    $.ajax({
+        url: 'http://localhost:8080/api/v2/log/update',  // Make sure this matches your backend endpoint
+        type: 'POST',
+        contentType: 'application/json',
+        headers: {
+            "Authorization": `Bearer ${token}`  // Add the JWT token to the Authorization header
+        },
+        data: JSON.stringify(monitorlogDTO),
+        success: function (response) {
+            alert(response);  // Success message
+            fetchLogDetails();  // Refresh the monitoring log and crop details table
+            clearForm();  // Clear the form after successful submission
+        },
+        error: function (xhr, status, error) {
+            alert('Error: ' + xhr.responseText);
+        }
+    });
+});
+
+function fetchLogDetails() {
+    const token = localStorage.getItem('jwtToken');
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v2/log',  // Assuming you have an endpoint to fetch all logs
+        type: 'GET',
+        headers: {
+            "Authorization": `Bearer ${token}`  // Add the JWT token to the Authorization header
+        },
+        success: function (data) {
+            for (var f of data) {
+
+                let row = `<tr>
+
+                     <th>${f.logCode}</th>
+                        <td>${f.logDate}</td>
+                        <td>${f.logDetails}</td>
+                        <td>${f.role}</td>
+                        <td>${f.fieldCode}</td>
+                      
+
+                    </tr>`;
+                $("#tblLog").append(row);
+
+            }  // Populate the Monitor Logs table
+        }
+    });
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v2/log/detail',  // Assuming you have an endpoint to fetch crop details
+        type: 'GET',
+        headers: {
+            "Authorization": `Bearer ${token}`  // Add the JWT token to the Authorization header
+        },
+        success: function (data) {
+            for (var f of data) {
+
+                let row = `<tr>
+
+                     <th>${f.logCode}</th>
+                        <td>${f.cropCode}</td>
+                        <td>${f.staffId}</td>
+                        <td>${f.membersInStaff}</td>
+                        <td>${f.quantity}</td>
+                      
+
+                    </tr>`;
+                $("#tblCropDetails").append(row);
+
+            }
+        }
+    });
+}
+// Function to clear the form fields
+function clearForm() {
+    $('#logcode').val('');
+    $('#logdate').val('');
+    $('#logdetail').val('');
+    $('#roleSelector').val('');
+    $('#fieldCode2').val('');
+    $('#cropCodeDesc').val('');
+    $('#staffCode2').val('');
+    $('#qunity').val('');
+    $('#memebers').val('');
+    $('#tableDetails').empty();
+    cropDetails = [];  // Reset crop details
+}
+
+
 
