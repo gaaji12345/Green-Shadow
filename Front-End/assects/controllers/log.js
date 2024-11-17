@@ -6,7 +6,7 @@ loadAllStaffCodeslog();
 fetchLogDetails();
 
 
-// Function to generate and load inventory code
+
 function loadlogCode(prefix) {
     const token = localStorage.getItem('jwtToken');
     $.ajax({
@@ -250,6 +250,28 @@ function fetchLogDetails() {
         }
     });
 }
+
+
+$('#btngetall').click(function() {
+    const token = localStorage.getItem('jwtToken');
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v2/log/most-used', // The URL of your controller endpoint
+        method: 'GET',
+        headers: {
+            "Authorization": `Bearer ${token}`  // Add the JWT token to the Authorization header
+        },
+        success: function(response) {
+            // If the response is successful, populate the input field with the crop code
+            $('#inputcropname').val(response); // Assuming the response is the cropCode
+
+        },
+        error: function(xhr, status, error) {
+            // Handle error, for example show a message in case of failure
+            alert('Error fetching most used crop: ' + error);
+        }
+    });
+});
 // Function to clear the form fields
 function clearForm() {
     $('#logcode').val('');
