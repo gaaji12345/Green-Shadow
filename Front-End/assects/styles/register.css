@@ -3,8 +3,64 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('../images/login.jpg') no-repeat;
+    background: url('../images/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand.jpg') no-repeat;
     background-size: cover;
     background-position: center;
   /*overflow-x: hidden;*/
+}
+
+.wrapper2{
+    width: 600px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(9px);
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+}
+
+#registerName,#registerEmail,#registerPassword{
+    width: 80%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #171212;
+    padding: 20px 45px 20px 20px;
+     margin-left: 32px;
+}
+
+.new input::placeholder{
+    color: #fff;
+}
+
+#userRole {
+    width: 80%;  /* Same width as input fields */
+    height: 50px;  /* Match the height of the input fields */
+    background: transparent;  /* Transparent background */
+    border: 2px solid rgba(255, 255, 255, .2);  /* Same border styling */
+    border-radius: 40px;  /* Rounded corners to match input fields */
+    font-size: 16px;  /* Font size to match input fields */
+    color: #171212;  /* Text color to match the design */
+    padding: 10px 45px 10px 20px;  /* Padding for text and arrow */
+    margin-left: 32px;  /* Same margin for consistent alignment */
+}
+
+/* Custom styling for the option elements */
+#userRole option {
+    background-color: #171212;
+    color: #fff;
+}
+
+/* Option for focus state */
+#userRole:focus {
+    outline: none;
+    border: 2px solid #fff;  /* Highlight border on focus */
+}
+
+#userRole option:checked {
+    background-color: #0056b3;  /* Option background on selection */
 }

@@ -1,0 +1,24 @@
+
+.table thead th {
+    background-color: #007bff; /* Header background color */
+    color: white; /* Header text color */
+}
+
+table {
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: center;
+}
+
+#staffTable {
+    width: 100%;
+    border-collapse: collapse; /* Ensure borders do not double up */
+}
+
+#staffTable th {
+    background-color: #ff9100; /* Bootstrap primary color */
+    color: white; /* Text color */
+    border: 1px solid #dee2e6; /* Border color */
+}
