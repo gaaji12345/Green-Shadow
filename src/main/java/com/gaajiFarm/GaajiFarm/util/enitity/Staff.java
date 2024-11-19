@@ -58,6 +58,9 @@ public class Staff {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "allocatedStaff")
     private List<Vehicle> vehicles = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "staff")
+    private List<CropDetails> cropDetails=new ArrayList<>();
+
 
 
 

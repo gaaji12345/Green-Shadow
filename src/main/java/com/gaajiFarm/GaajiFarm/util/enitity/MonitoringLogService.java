@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,10 +20,12 @@ public class MonitoringLogService {
     @Id
      private String logCode;
 
-    private Timestamp logDate;
+    private LocalDate logDate;
 
     private String logDetails;
 
+
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH})
@@ -29,8 +33,9 @@ public class MonitoringLogService {
     private Field  field;
 
 
-    @OneToMany(mappedBy = "logService", cascade = CascadeType.ALL)
-    private List<CropDetails> cropDetails;
+    // Initialize the cropDetails list to avoid NullPointerException
+    @OneToMany(mappedBy = "logService", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CropDetails> cropDetails = new ArrayList<>(); // Initialize with an empty list
 
 
 }

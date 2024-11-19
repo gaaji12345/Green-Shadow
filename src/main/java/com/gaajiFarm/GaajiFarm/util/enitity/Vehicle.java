@@ -30,8 +30,6 @@ public class Vehicle {
     @JoinColumn(name = "staff_id")
     private Staff allocatedStaff;
 
-
-
     private String remarks;
 
 

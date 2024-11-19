@@ -32,7 +32,6 @@ public class Field {
 
     private String nameOfCrop;
 
-
     @ManyToOne
     @JoinColumn(name = "staff_id" )// This will not create a separate table
     private Staff staff;

@@ -1,13 +1,9 @@
-package com.gaajiFarm.GaajiFarm.config;/*  gaajiCode
-    99
-    09/09/2024
-    */
+package com.gaajiFarm.GaajiFarm.util.enitity;
 
-
-
-import com.gaajiFarm.GaajiFarm.util.enitity.User;
-import lombok.Builder;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,23 +11,29 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Builder
-public class AuthUser implements UserDetails {
-    private User user;
+@Entity
+@Table(name = "ourusers")
+public class OurUsers implements UserDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String email;
+    private String password;
+    private String role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(user.getRole().name()));
+        return List.of(new SimpleGrantedAuthority(role));
     }
 
-    @Override
-    public String getPassword() {
-        return user.getPassword();
-    }
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return email;
     }
 
     @Override

@@ -21,6 +21,10 @@ public class CropDetails {
 
     private int quantity;
 
+    private int membersInStaff;
+
+
+
     @ManyToOne
     @JoinColumn(name = "logCode",referencedColumnName = "logCode",insertable = false,updatable = false)
     private MonitoringLogService logService;
@@ -30,10 +34,11 @@ public class CropDetails {
     @JoinColumn(name = "staff_id",insertable = false,updatable = false)
     private Staff staff;
 
-    @ManyToOne
-    @JoinColumn(name ="equipmentId",insertable = false,updatable = false )
-    private Equpment equpment;
 
+
+    @ManyToOne
+    @JoinColumn(name = "crop_code",insertable = false,updatable = false)
+    private Crop crop;
 
 
 

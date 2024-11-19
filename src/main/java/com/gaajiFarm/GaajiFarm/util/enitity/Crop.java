@@ -3,6 +3,10 @@ package com.gaajiFarm.GaajiFarm.util.enitity;/*  gaajiCode
     27/10/2024
     */
 
+import com.gaajiFarm.GaajiFarm.util.enums.CropCategory;
+import com.gaajiFarm.GaajiFarm.util.enums.CropComnName;
+import com.gaajiFarm.GaajiFarm.util.enums.CropScineceName;
+import com.gaajiFarm.GaajiFarm.util.enums.CropSesasons;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,18 +22,22 @@ public class Crop {
     @Column(name = "crop_code")
     private String cropCode;
 
-    private String cropCommonName;
+    @Enumerated(EnumType.STRING)
+    private CropComnName cropCommonName;
 
-    private String cropScientificName;
+    @Enumerated(EnumType.STRING)
+    private CropScineceName cropScientificName;
 
-    @Lob
+    @Column(name = "crop_image" , columnDefinition = "LONGTEXT")
     private String cropImage;
 
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private CropCategory category;
 
     private int qty;
 
-    private String cropSeason;
+    @Enumerated(EnumType.STRING)
+    private CropSesasons cropSeason;
 
     private String fieldCodes;
 

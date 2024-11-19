@@ -8,6 +8,9 @@ import com.gaajiFarm.GaajiFarm.util.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 public class Equpment {
@@ -31,6 +34,12 @@ public class Equpment {
     @ManyToOne
     @JoinColumn(name = "field_code")
     private Field assignedField;
+
+//
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "equpment")
+//    private List<CropDetails> cropDetails=new ArrayList<>();
+
+
 
 
 }
