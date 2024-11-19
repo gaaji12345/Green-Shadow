@@ -10,35 +10,43 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+
   <link rel="stylesheet" href="assects/styles/staff.css">
   <link rel="stylesheet" href="assects/styles/filed.css">
+  <link rel="stylesheet" href="assects/styles/sidebar.css">
+  <link rel="stylesheet" href="assects/styles/contentearea.css">
+  <link rel="stylesheet" href="assects/styles/navbar.css">
+  <link rel="stylesheet" href="assects/styles/dashdesgin.css">
 <!--  <link rel="stylesheet" href="assects/styles/vehcile.css">-->
   <style>
     /* Custom styles */
-    body {
-      display: flex;
-    }
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 180px;
-      background-color: #343a40;
-      color: #fff;
-      padding-top: 20px;
-    }
-    .sidebar .nav-link {
-      color: #fff;
-    }
-    .sidebar .nav-link:hover {
-      background-color: #007bff;
-    }
-    .content {
-      margin-left: 180px;
-      padding: 20px;
-      width: 100%;
-    }
+    /*body {*/
+    /*  display: flex;*/
+    /*}*/
+    /*.sidebar {*/
+    /*  position: fixed;*/
+    /*  top: 0;*/
+    /*  left: 0;*/
+    /*  height: 100%;*/
+    /*  width: 180px;*/
+    /*  background-color: #343a40;*/
+    /*  color: #fff;*/
+    /*  padding-top: 20px;*/
+    /*}*/
+    /*.sidebar .nav-link {*/
+    /*  color: #fff;*/
+    /*}*/
+    /*.sidebar .nav-link:hover {*/
+    /*  background-color: #007bff;*/
+    /*}*/
+    /*.content {*/
+    /*  margin-left: 180px;*/
+    /*  padding: 20px;*/
+    /*  width: 100%;*/
+    /*}*/
     .icon-container {
       cursor: pointer;
     }
@@ -50,53 +58,135 @@
 <body>
 
 <!-- Sidebar -->
+<!--<div class="sidebar">-->
+<!--  <div class="logo-menu">-->
+<!--&lt;!&ndash;    <h3 class="text-center text-white mb-4" id="logo">MENU</h3>&ndash;&gt;-->
+<!--    <h2 class="logo">Menu</h2>-->
+<!--    <i class="fas fa-bars" ></i>-->
+<!--  </div>-->
+<!--  <ul class="nav flex-column">-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link active" href="#" id="dashboardLink">-->
+<!--        <i class="fas fa-tachometer-alt"></i> Dashboard-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" href="#" id="filedLink">-->
+<!--        <i class="fas fa-folder"></i> Filed-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" href="#" id="userLink">-->
+<!--        <i class="fas fa-users"></i> Users-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link active" href="#" id="cropLink">-->
+<!--        <i class="fas fa-tachometer-alt"></i> CROP-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link active" href="#" id="vehiclesLink">-->
+<!--        <i class="fas fa-car"></i> VEHICLE-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link active" href="#" id="equipmentLink">-->
+<!--        <i class="fas fa-cogs"></i> Equipment-->
+<!--      </a>-->
+
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" href="#" id="emailLink">-->
+<!--        <i class="fas fa-envelope"></i> Send Email-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" href="#" id="detailLink">-->
+<!--        <i class="fas fa-info-circle"></i>  Logs-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" href="#" id="user2Link">-->
+<!--        <i class="fas fa-user"></i>-->
+<!--        Users-->
+<!--      </a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" href="#" id="logoutLink">-->
+<!--        <i class="fas fa-sign-out-alt"></i> Logout-->
+<!--      </a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->
+
 <div class="sidebar">
-  <h3 class="text-center text-white mb-4">MENU</h3>
-  <ul class="nav flex-column">
-    <li class="nav-item">
+  <div class="logo-menu">
+    <!--    <h3 class="text-center text-white mb-4" id="logo">MENU</h3>-->
+    <h2 class="logo">Menu</h2>
+    <i class="fas fa-bars toggle-btn" ></i>
+  </div>
+  <ul class="nav flex-column" id="list">
+    <li class="nav-item active">
       <a class="nav-link active" href="#" id="dashboardLink">
-        <i class="fas fa-tachometer-alt"></i> Dashboard
+        <i class="fas fa-tachometer-alt "></i>
+        <span class="link-name" style="--i:1">DASHBOARD</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" id="filedLink">
-        <i class="fas fa-folder"></i> Filed
+        <i class="fas fa-folder"></i>
+        <span class="link-name" style="--i:2">FIELD</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" id="userLink">
-        <i class="fas fa-users"></i> Users
+        <i class="fas fa-users"></i>
+        <span class="link-name" style="--i:3">STAFF</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link active" href="#" id="cropLink">
-        <i class="fas fa-tachometer-alt"></i> CROP
+        <i class="fas fa-tachometer-alt"></i>
+        <span class="link-name" style="--i:4">CROP</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link active" href="#" id="vehiclesLink">
-        <i class="fas fa-car"></i> VEHICLE
+        <i class="fas fa-car"></i>
+        <span class="link-name" style="--i:5">VEHICLE</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link active" href="#" id="equipmentLink">
-        <i class="fas fa-cogs"></i> Equipment
+        <i class="fas fa-cogs"></i>
+        <span class="link-name" style="--i:6">Equipment</span>
       </a>
 
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" id="emailLink">
-        <i class="fas fa-envelope"></i> Send Email
+        <i class="fas fa-envelope"></i>
+        <span class="link-name" style="--i:7">Email</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" id="detailLink">
-        <i class="fas fa-info-circle"></i>  Logs
+        <i class="fas fa-info-circle"></i>
+        <span class="link-name" style="--i:8">Logs</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="user2Link">
+        <i class="fas fa-user"></i>
+        <span class="link-name">  Users</span>
+
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" id="logoutLink">
-        <i class="fas fa-sign-out-alt"></i> Logout
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="link-name">Logout</span>
       </a>
     </li>
   </ul>
@@ -104,10 +194,169 @@
 
 <!-- Main Content Area -->
 <div class="content">
+
+  <nav style="border: transparent 2px solid" >
+    <form action="#">
+      <div class="form-input"  >
+        <input type="search" placeholder="Search..." style="border: 2px solid black">
+        <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+      </div>
+    </form>
+    <input type="checkbox" id="theme-toggle" hidden>
+    <label for="theme-toggle" class="theme-toggle"></label>
+    <a href="#" class="notif">
+      <i class='bx bx-bell'></i>
+      <span class="count">12</span>
+    </a>
+    <a href="#" class="profile">
+      <img src="assects/images/profile-1.jpg">
+    </a>
+  </nav>
+
   <!-- Dashboard Section -->
   <section id="dashboardSection">
-    <h2 class="text-center my-4">Dashboard</h2>
+
     <!-- Your Dashboard Content Goes Here -->
+    <main>
+      <div class="header">
+        <div class="left">
+
+          <ul class="breadcrumb">
+<!--            <li><a href="#">-->
+<!--              Analytics-->
+<!--            </a></li>-->
+
+            <li><a href="#" class="active">FARM</a></li>
+          </ul>
+        </div>
+<!--        <a href="#" class="report">-->
+<!--          <i class='bx bx-cloud-download'></i>-->
+<!--          <span>Download CSV</span>-->
+<!--        </a>-->
+      </div>
+
+      <!-- Insights -->
+      <ul class="insights">
+        <li>
+          <i class='bx bx-calendar-check'></i>
+          <span class="info">
+                        <h3>
+                            1,074
+                        </h3>
+                        <p>Paid Crops</p>
+                    </span>
+        </li>
+        <li><i class='bx bx-show-alt'></i>
+          <span class="info">
+                        <h3>
+                            3,944
+                        </h3>
+                        <p>Site Visit</p>
+                    </span>
+        </li>
+        <li><i class='bx bx-line-chart'></i>
+          <span class="info">
+                        <h3>
+                            14,721
+                        </h3>
+                        <p>Searches</p>
+                    </span>
+        </li>
+        <li><i class='bx bx-dollar-circle'></i>
+          <span class="info">
+                        <h3>
+<!--                            $6,742-->
+                          45689
+                        </h3>
+                        <p>Total CROPS</p>
+                    </span>
+        </li>
+      </ul>
+      <!-- End of Insights -->
+
+      <div class="bottom-data">
+        <div class="orders">
+          <div class="header">
+            <i class='bx bx-receipt'></i>
+            <h3>Recent MOST USED CROPS</h3>
+            <i class='bx bx-filter'></i>
+            <i class='bx bx-search'></i>
+          </div>
+          <table>
+            <thead>
+            <tr>
+              <th>User</th>
+              <th>Log Date</th>
+              <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <img src="assects/images/profile-1.jpg">
+                <p>Gaaji</p>
+              </td>
+              <td>14-08-2023</td>
+              <td><span class="status completed">Completed</span></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/profile-1.jpg">
+                <p>YASH</p>
+              </td>
+              <td>14-08-2023</td>
+              <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/profile-1.jpg">
+                <p>MASHI</p>
+              </td>
+              <td>14-08-2023</td>
+              <td><span class="status process">Processing</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Reminders -->
+        <div class="reminders">
+          <div class="header">
+            <i class='bx bx-note'></i>
+            <h3>Remiders</h3>
+            <i class='bx bx-filter'></i>
+            <i class='bx bx-plus'></i>
+          </div>
+          <ul class="task-list">
+            <li class="completed">
+              <div class="task-title">
+                <i class='bx bx-check-circle'></i>
+                <p>Start Our Meeting</p>
+              </div>
+              <i class='bx bx-dots-vertical-rounded'></i>
+            </li>
+            <li class="completed">
+              <div class="task-title">
+                <i class='bx bx-check-circle'></i>
+                <p>Analyse Our Site</p>
+              </div>
+              <i class='bx bx-dots-vertical-rounded'></i>
+            </li>
+            <li class="not-completed">
+              <div class="task-title">
+                <i class='bx bx-x-circle'></i>
+                <p>Play Footbal</p>
+              </div>
+              <i class='bx bx-dots-vertical-rounded'></i>
+            </li>
+          </ul>
+        </div>
+
+        <!-- End of Reminders-->
+
+      </div>
+
+    </main>
   </section>
 
   <!-- Filed Section -->
@@ -202,189 +451,377 @@
     </div>
   </section>
 
-  <!-- User Section -->
+  <!-- Staff Section -->
   <section id="userSection" style="display: none;">
-    <div class="container">
+
       <h2 class="text-center">Register User</h2>
       <!-- Your User Section Content Goes Here -->
       <div class="container">
-        <h2>Staff Details</h2>
+<!--        <div  class="container-fluid mt-3">-->
+<!--          <form id="staffForm">-->
+<!--            &lt;!&ndash; Personal Information Section &ndash;&gt;-->
+<!--            <div class="form-section">-->
 
-        <form id="staffForm">
-          <!-- Personal Information Section -->
-          <div class="form-section">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="staffId">Staff ID</label>
-                <input type="text" class="form-control" id="staffId1" name="staffId" readonly>
+<!--              <div class="row">-->
+<!--                &lt;!&ndash; Staff ID &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="staffId">Staff ID</label>-->
+<!--                  <input type="text" class="form-control" id="staffId1" name="staffId" readonly>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; First Name &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="firstName">First Name</label>-->
+<!--                  <input type="text" class="form-control" id="firstName" name="firstName" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Last Name &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="lastName">Last Name</label>-->
+<!--                  <input type="text" class="form-control" id="lastName" name="lastName" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Designation &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="designation">Designation</label>-->
+<!--                  <input type="text" class="form-control" id="designation" name="designation" required>-->
+<!--                </div>-->
+<!--              </div>-->
+
+
+
+<!--              <div class="row">-->
+<!--                &lt;!&ndash; Gender &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="gender">Gender</label>-->
+<!--                  <select class="form-control" id="gender" name="gender">-->
+<!--                    <option value="MALE">Male</option>-->
+<!--                    <option value="FEMALE">Female</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Joined Date &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="joinedDate">Joined Date</label>-->
+<!--                  <input type="date" class="form-control" id="joinedDate" name="joinedDate" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Date of Birth &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="dob">Date of Birth</label>-->
+<!--                  <input type="date" class="form-control" id="dob" name="dob" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Address Line 1 &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="addressLine1">Address Line 1</label>-->
+<!--                  <input type="text" class="form-control" id="addressLine1" name="addressLine1" placeholder="Address Line 1" required>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="row">-->
+<!--                &lt;!&ndash; Address Line 2 &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="addressLine2">Address Line 2</label>-->
+<!--                  <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Address Line 3 &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="addressLine3">Address Line 3</label>-->
+<!--                  <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Address Line 4 &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="addressLine4">Address Line 4</label>-->
+<!--                  <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Address Line 5 &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="addressLine5">Address Line 5</label>-->
+<!--                  <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5" required>-->
+<!--                </div>-->
+<!--              </div>-->
+
+
+<!--            </div>-->
+
+<!--            <div class="form-section">-->
+<!--&lt;!&ndash;              <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <label for="contactNo">Contact No</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <input type="text" class="form-control" id="contactNo" name="contactNo" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <label for="email1">Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <input type="email" class="form-control" id="email1" name="email" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <label for="fieldCode">Field Code</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <select class="form-control" id="fieldCode1" name="fieldCode">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option value="">Select Field Code</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                  </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <label for="vCode">V Code</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <select class="form-control" id="vCode" name="vcode">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option value="">Select V Code</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                  </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--              <div class="row">-->
+<!--                &lt;!&ndash; Contact No &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="contactNo">Contact No</label>-->
+<!--                  <input type="text" class="form-control" id="contactNo" name="contactNo" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Email &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="email1">Email</label>-->
+<!--                  <input type="email" class="form-control" id="email1" name="email" required>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Field Code &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="fieldCode">Field Code</label>-->
+<!--                  <select class="form-control" id="fieldCode1" name="fieldCode">-->
+<!--                    <option value="">Select Field Code</option>-->
+<!--                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;-->
+<!--                  </select>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; V Code &ndash;&gt;-->
+<!--                <div class="col-md-2 mb-3">-->
+<!--                  <label for="vCode">V Code</label>-->
+<!--                  <select class="form-control" id="vCode" name="vcode">-->
+<!--                    <option value="">Select V Code</option>-->
+<!--                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="row">-->
+<!--                <div class="col-md-6 mb-3">-->
+<!--                  <label for="members">Members</label>-->
+<!--                  <input type="number" class="form-control" id="members" name="members">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <button type="button" class="btn btn-outline-primary" id="savestaffbtn">SAVE</button>-->
+<!--            &lt;!&ndash;            <button type="button" class="btn btn-outline-secondary">Secondary</button>&ndash;&gt;-->
+<!--            <button type="button" class="btn btn-outline-success" id="updatestaffbtn">UPDATE</button>-->
+<!--            <button type="button" class="btn btn-outline-danger" id="deletestaffbtn">DELETE</button>-->
+<!--          </form>-->
+
+<!--          &lt;!&ndash; Display Table &ndash;&gt;-->
+<!--          <div class="container mt-4">-->
+<!--            <h5>Staff Information Table</h5>-->
+<!--            <table class="table table-bordered table-responsive" id="staffTable">-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                <th>Staff ID</th>-->
+<!--                <th>First Name</th>-->
+<!--                <th>Last Name</th>-->
+<!--                <th>Designation</th>-->
+<!--                <th>Gender</th>-->
+<!--                <th>Joined Date</th>-->
+<!--                <th>DOB</th>-->
+<!--                <th>Address1</th>-->
+<!--                <th>Address2</th>-->
+<!--                <th>Address3</th>-->
+<!--                <th>Address4</th>-->
+<!--                <th>Address5</th>-->
+<!--                <th>Contact No</th>-->
+<!--                <th>Email</th>-->
+<!--                <th>Members</th>-->
+<!--                <th>Field Code</th>-->
+<!--                <th> Vechile -Code</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody id="staffTboady">-->
+<!--              &lt;!&ndash; Use JavaScript to populate this table dynamically based on form inputs &ndash;&gt;-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+
+<!--        </div>-->
+
+        <div class="container-fluid mt-3">
+          <form id="staffForm">
+            <!-- Personal Information Section -->
+            <div class="form-section">
+              <div class="row">
+                <!-- Staff ID -->
+                <div class="col-md-3 mb-3">
+                  <label for="staffId">Staff ID</label>
+                  <input type="text" class="form-control" id="staffId1" name="staffId" readonly>
+                </div>
+
+                <!-- First Name -->
+                <div class="col-md-3 mb-3">
+                  <label for="firstName">First Name</label>
+                  <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+
+                <!-- Last Name -->
+                <div class="col-md-3 mb-3">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+
+                <!-- Designation -->
+                <div class="col-md-3 mb-3">
+                  <label for="designation">Designation</label>
+                  <input type="text" class="form-control" id="designation" name="designation" required>
+                </div>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
+
+              <div class="row">
+                <!-- Gender -->
+                <div class="col-md-3 mb-3">
+                  <label for="gender">Gender</label>
+                  <select class="form-control" id="gender" name="gender">
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                  </select>
+                </div>
+
+                <!-- Joined Date -->
+                <div class="col-md-3 mb-3">
+                  <label for="joinedDate">Joined Date</label>
+                  <input type="date" class="form-control" id="joinedDate" name="joinedDate" required>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="col-md-3 mb-3">
+                  <label for="dob">Date of Birth</label>
+                  <input type="date" class="form-control" id="dob" name="dob" required>
+                </div>
+
+                <!-- Address Line 1 -->
+                <div class="col-md-3 mb-3">
+                  <label for="addressLine1">Address Line 1</label>
+                  <input type="text" class="form-control" id="addressLine1" name="addressLine1" placeholder="Address Line 1" required>
+                </div>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="designation">Designation</label>
-                <input type="text" class="form-control" id="designation" name="designation" required>
+
+              <div class="row">
+                <!-- Address Line 2 -->
+                <div class="col-md-3 mb-3">
+                  <label for="addressLine2">Address Line 2</label>
+                  <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2" required>
+                </div>
+
+                <!-- Address Line 3 -->
+                <div class="col-md-3 mb-3">
+                  <label for="addressLine3">Address Line 3</label>
+                  <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3" required>
+                </div>
+
+                <!-- Address Line 4 -->
+                <div class="col-md-3 mb-3">
+                  <label for="addressLine4">Address Line 4</label>
+                  <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4" required>
+                </div>
+
+                <!-- Address Line 5 -->
+                <div class="col-md-3 mb-3">
+                  <label for="addressLine5">Address Line 5</label>
+                  <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5" required>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="gender">Gender</label>
-                <select class="form-control" id="gender" name="gender">
-                  <option value="MALE">Male</option>
-                  <option value="FEMALE">Female</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="joinedDate">Joined Date</label>
-                <input type="date" class="form-control" id="joinedDate" name="joinedDate" required>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="dob">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" name="dob" required>
-              </div>
 
-              <div class="col-md-6 mb-3">
-                <label for="dob">Address Line 1</label>
-                <input type="text" class="form-control" id="addressLine1" name="addressLine1" placeholder="Address Line 1" required>
+            <div class="form-section">
+              <div class="row">
+                <!-- Contact No -->
+                <div class="col-md-3 mb-3">
+                  <label for="contactNo">Contact No</label>
+                  <input type="text" class="form-control" id="contactNo" name="contactNo" required>
+                </div>
 
-              </div>
+                <!-- Email -->
+                <div class="col-md-3 mb-3">
+                  <label for="email1">Email</label>
+                  <input type="email" class="form-control" id="email1" name="email" required>
+                </div>
 
+                <!-- Field Code -->
+                <div class="col-md-3 mb-3">
+                  <label for="fieldCode">Field Code</label>
+                  <select class="form-control" id="fieldCode1" name="fieldCode">
+                    <option value="">Select Field Code</option>
+                  </select>
+                </div>
 
-              <div class="col-md-6 mb-3">
-                <label for="dob">Address Line 2</label>
-                <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2" required>
-
-              </div>
-
-              <div class="col-md-6 mb-3">
-                <label for="dob">Address Line 3</label>
-                <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3" required>
-
+                <!-- V Code -->
+                <div class="col-md-3 mb-3">
+                  <label for="vCode">V Code</label>
+                  <select class="form-control" id="vCode" name="vcode">
+                    <option value="">Select V Code</option>
+                  </select>
+                </div>
               </div>
 
-              <div class="col-md-6 mb-3">
-                <label for="dob">Address Line 4</label>
-                <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4" required>
-
+              <div class="row">
+                <div class="col-md-2 mb-3">
+                  <label for="members">Members</label>
+                  <input type="number" class="form-control" id="members" name="members">
+                </div>
               </div>
+            </div>
 
-              <div class="col-md-6 mb-3">
-                <label for="dob">Address Line 1</label>
-                <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5" required>
+            <button type="button" class="btn btn-outline-primary" id="savestaffbtn">SAVE</button>
+            <button type="button" class="btn btn-outline-success" id="updatestaffbtn">UPDATE</button>
+            <button type="button" class="btn btn-outline-danger" id="deletestaffbtn">DELETE</button>
+          </form>
 
-              </div>
-
-
-
+          <!-- Display Table -->
+          <div class="container mt-4">
+            <h5>Staff Information Table</h5>
+            <div >
+              <table class="table table-bordered table-responsive" id="staffTable">
+                <thead>
+                <tr>
+                  <th>Staff ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Designation</th>
+                  <th>Gender</th>
+                  <th>Joined Date</th>
+                  <th>DOB</th>
+                  <th>Address1</th>
+                  <th>Address2</th>
+                  <th>Address3</th>
+                  <th>Address4</th>
+                  <th>Address5</th>
+                  <th>Contact No</th>
+                  <th>Email</th>
+                  <th>Members</th>
+                  <th>Field Code</th>
+                  <th>Vehicle Code</th>
+                </tr>
+                </thead>
+                <tbody id="staffTboady">
+                <!-- Use JavaScript to populate this table dynamically based on form inputs -->
+                </tbody>
+              </table>
             </div>
           </div>
-
-          <!-- Address Section -->
-          <!--            <div class="form-section">-->
-
-
-
-
-          <!--            </div>-->
-
-          <!--            <div class="row">-->
-          <!--                <div class="form-group col-md-6">-->
-          <!--                    <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2">-->
-          <!--                </div>-->
-          <!--                <div class="form-group col-md-6">-->
-          <!--                    <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3">-->
-          <!--                </div>-->
-          <!--            </div>-->
-          <!--            <div class="row">-->
-          <!--                <div class="form-group col-md-6">-->
-          <!--                    <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4">-->
-
-          <!--                </div>-->
-
-          <!--                <div class="form-group col-md-6">-->
-          <!--                    <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5">-->
-          <!--                </div>-->
-          <!--            </div>-->
-
-          <!-- Contact Information Section -->
-          <div class="form-section">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="contactNo">Contact No</label>
-                <input type="text" class="form-control" id="contactNo" name="contactNo" required>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="email1">Email</label>
-                <input type="email" class="form-control" id="email1" name="email" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="fieldCode">Field Code</label>
-                <select class="form-control" id="fieldCode1" name="fieldCode">
-                  <option value="">Select Field Code</option>
-                  <!-- Add options dynamically as needed -->
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="vCode">V Code</label>
-                <select class="form-control" id="vCode" name="vcode">
-                  <option value="">Select V Code</option>
-                  <!-- Add options dynamically as needed -->
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="members">Members</label>
-                <input type="number" class="form-control" id="members" name="members">
-              </div>
-            </div>
-          </div>
-
-          <button type="button" class="btn btn-outline-primary" id="savestaffbtn">SAVE</button>
-          <!--            <button type="button" class="btn btn-outline-secondary">Secondary</button>-->
-          <button type="button" class="btn btn-outline-success" id="updatestaffbtn">UPDATE</button>
-          <button type="button" class="btn btn-outline-danger" id="deletestaffbtn">DELETE</button>
-        </form>
-
-        <!-- Display Table -->
-        <div class="container mt-4">
-          <h5>Staff Information Table</h5>
-          <table class="table table-bordered table-responsive" id="staffTable">
-            <thead>
-            <tr>
-              <th>Staff ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Designation</th>
-              <th>Gender</th>
-              <th>Joined Date</th>
-              <th>DOB</th>
-              <th>Address1</th>
-              <th>Address2</th>
-              <th>Address3</th>
-              <th>Address4</th>
-              <th>Address5</th>
-              <th>Contact No</th>
-              <th>Email</th>
-              <th>Members</th>
-              <th>Field Code</th>
-              <th> Vechile -Code</th>
-            </tr>
-            </thead>
-            <tbody id="staffTboady">
-            <!-- Use JavaScript to populate this table dynamically based on form inputs -->
-            </tbody>
-          </table>
         </div>
+
+
+
       </div>
-    </div>
+
   </section>
 
   <!-- Equipment Section -->
@@ -733,9 +1170,8 @@
       <section id="log-page" class="container-fluid mt-3">
         <div class="row justify-content-around">
 
-          <!-- Order Invoice Details Section Start -->
-          <div class="col-10 col-md-5 col-lg-4 p-3 mt-3 sectionBorder bg-light">
-            <h5 class="text-center p-2 text-light rounded-3" style="background: #a1a1a1">Invoice Details</h5>
+          <div class="col-10 col-md-5 col-lg-4 p-3 mt-3 sectionBorder bg-light" style="border: 2px solid black">
+            <h5 class="text-center p-2 text-light rounded-3" style="background: #a1a1a1">Monitorlog Details</h5>
             <div class="row mt-1">
               <div class="col-12 col-md-6">
                 <label class="fw-bold" for="logcode">Log Code</label>
@@ -778,7 +1214,7 @@
           </div>
 
 
-          <div class="col-10 col-md-5 col-lg-4 p-3 mt-3 sectionBorder bg-light">
+          <div class="col-10 col-md-5 col-lg-4 p-3 mt-3 sectionBorder bg-light" style="border: 2px solid black">
             <h5 class="text-center p-2 text-light rounded-3" style="background: #a1a1a1">Crop-Details</h5>
             <div class="row mt-1">
 
@@ -810,7 +1246,20 @@
           </div>
 
 
-          <div class="col-10 col-md-5 col-lg-3 p-3 mt-3 sectionBorder bg-light">
+<!--          <div class="col-10 col-md-5 col-lg-3 p-3 mt-3 sectionBorder bg-light">-->
+<!--            <h5 class="text-center bg-danger p-2 text-light rounded-3">Crop Details</h5>-->
+
+<!--            <div class="row mt-1">-->
+<!--              <div class="col-12 col-md-6 mt-4">-->
+<!--                <button class="btn btn-success rounded-2" id="btnaddcrop" type="button">ADD-CROPS</button>-->
+<!--              </div>-->
+<!--              <div class="col-12 col-md-6 mt-4">-->
+<!--                <button class="btn btn-danger rounded-2" id="btnsumbit" type="button">SUMBIT</button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <div class="col-10 col-md-5 col-lg-3 p-3 mt-3 sectionBorder bg-light" style="border: 2px solid black">
             <h5 class="text-center bg-danger p-2 text-light rounded-3">Crop Details</h5>
 
             <div class="row mt-1">
@@ -821,7 +1270,18 @@
                 <button class="btn btn-danger rounded-2" id="btnsumbit" type="button">SUMBIT</button>
               </div>
             </div>
+
+            <!-- New input field and "GET ALL" button -->
+            <div class="row mt-4">
+              <div class="col-12 col-md-6 mt-4">
+                <input type="text" class="form-control" id="inputcropname" disabled placeholder="Most Used Crop">
+              </div>
+              <div class="col-12 col-md-6 mt-4">
+                <button class="btn btn-primary rounded-2" id="btngetall" type="button">GET ALL</button>
+              </div>
+            </div>
           </div>
+
 
           <div class="d-grid col-12 col-md-2 mt-4">
             <button class="btn btn-danger rounded-2" id="btnClearAll" type="button">Clear All</button>
@@ -852,7 +1312,7 @@
             <h4 class="text-center p-2 text-light rounded-5" style="background: #011149">Monitor-Logs</h4>
             <div class="col-11 mt-3">
               <div class="PlaceOrderTableDiv overflow-auto" style="max-height: 250px;">
-                <table class="table table-success table-striped table-bordered">
+                <table class="table table-success table-striped table-bordered" style="margin-left: 10px">
                   <thead class="table-dark text-light text-center">
                   <tr>
                     <th>Log-Codes</th>
@@ -874,7 +1334,7 @@
             <h4 class="text-center p-2 text-light rounded-5" style="background: #011149">Sale Details</h4>
             <div class="col-11 mt-3">
               <div class="PlaceOrderTableDiv overflow-auto" style="max-height: 250px;">
-                <table class="table table-success table-striped table-bordered">
+                <table class="table table-success table-striped table-bordered" >
                   <thead class="table-dark text-light text-center">
                   <tr>
                     <th>Log Code</th>
@@ -897,6 +1357,40 @@
 
   </section>
 
+
+
+  <section id="userSection2" style="display: none;">
+    <div class="container" id="user2d">
+      <h2 class="text-center">Register User</h2>
+      <div class="message"></div>
+      <form id="registrationForms2">
+        <div class="row">
+
+          <div class="form-group col-md-6">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id" required>
+          </div>
+        </div>
+        <button type="button" class="btn btn-outline-danger" id="deleteUser">DELETE</button>
+      </form>
+      <h3 class="mt-5">Registered Users</h3>
+      <table class="table table-bordered mt-3 table table-hover" id="userTable">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>EMAIL</th>
+<!--          <th>PASSWORD</th>-->
+        </tr>
+        </thead>
+        <tbody id="userTboady">
+        <!-- User data will be populated here -->
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+
 </div>
 
 <!-- jQuery and Bootstrap JS -->
@@ -905,14 +1399,15 @@
 <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>-->
 
 <script src="assects/sweetAlerts.js"></script>
-<script src="assects/controllers/dashtest.js"></script>
-<script src="assects/controllers/vehicle.js"></script>
-<script src="assects/controllers/email.js"></script>
-<script src="assects/controllers/staff.js"></script>
-<script src="assects/controllers/field.js"></script>
-<script src="assects/controllers/crop.js"></script>
-<script src="assects/controllers/eq.js"></script>
-<script src="assects/controllers/log.js"></script>
+<script src="controllers/dashtest.js"></script>
+<script src="controllers/vehicle.js"></script>
+<script src="controllers/email.js"></script>
+<script src="controllers/staff.js"></script>
+<script src="controllers/field.js"></script>
+<script src="controllers/crop.js"></script>
+<script src="controllers/eq.js"></script>
+<script src="controllers/log.js"></script>
+<script src="controllers/users.js"></script>
 <!--<script src=""></script>-->
 
 <script>
