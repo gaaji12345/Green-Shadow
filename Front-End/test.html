@@ -20,7 +20,10 @@
   <link rel="stylesheet" href="assects/styles/contentearea.css">
   <link rel="stylesheet" href="assects/styles/navbar.css">
   <link rel="stylesheet" href="assects/styles/dashdesgin.css">
-<!--  <link rel="stylesheet" href="assects/styles/vehcile.css">-->
+  <link rel="stylesheet" href="assects/styles/crop.css">
+  <link rel="stylesheet" href="assects/styles/vehcile.css">
+  <link rel="stylesheet" href="assects/styles/eqipment.css">
+  <link rel="stylesheet" href="assects/styles/email.css">
   <style>
     /* Custom styles */
     /*body {*/
@@ -378,11 +381,26 @@
             <div class="col-md-4">
               <label for="fieldName" class="form-label">Field Name</label>
               <input type="text" class="form-control" id="fieldName" name="fieldName" placeholder="Enter Field Name">
+              <span id="fieldNameError" class="text-danger" style="display: none;">Field Name is required</span>
             </div>
+<!--            <div class="col-md-4">-->
+<!--              <label for="fieldLocation" class="form-label">Field Location</label>-->
+<!--              <input type="text" class="form-control" id="fieldLocation" name="fieldLocation" placeholder="Enter Field Location">-->
+<!--              <span id="fieldLocationError" class="text-danger" style="display: none;">Field Location is required</span>-->
+<!--            </div>-->
             <div class="col-md-4">
               <label for="fieldLocation" class="form-label">Field Location</label>
-              <input type="text" class="form-control" id="fieldLocation" name="fieldLocation" placeholder="Enter Field Location">
+              <select class="form-control" id="fieldLocation" name="fieldLocation">
+                <option value="" disabled selected>Select Field Location</option>
+                <option value="ROOTB2">ROOTB2</option>
+                <option value="BC123">BC123</option>
+                <option value="F4RTV">F4RTV</option>
+                <option value="GB34">GB34</option>
+                <option value="MH76">MH76</option>
+              </select>
+              <span id="fieldLocationError" class="text-danger" style="display: none;">Field Location is required</span>
             </div>
+
           </div>
 
           <!-- Second Row for Size, Crop Code, and Crop Name -->
@@ -390,16 +408,20 @@
             <div class="col-md-4">
               <label for="size" class="form-label">Size (Acres)</label>
               <input type="number" class="form-control" id="size" name="size" placeholder="Enter Size">
+              <span id="sizeError" class="text-danger" style="display: none;">Size is required</span>
             </div>
             <div class="col-md-4">
               <label for="cropCode" class="form-label">Crop Code</label>
               <select class="form-control" id="cropCode" name="cropCode">
                 <option value="">Select CROP ID</option>
               </select>
+              <span id="cropCodeError" class="text-danger" style="display: none;">Crop Code is required</span>
             </div>
             <div class="col-md-4">
               <label for="nameOfCrop" class="form-label">Crop Name</label>
               <input type="text" class="form-control" id="nameOfCrop" name="nameOfCrop" placeholder="Enter Crop Name">
+              <span id="nameOfCropError" class="text-danger" style="display: none;">Crop Name is required</span>
+
             </div>
           </div>
 
@@ -410,6 +432,8 @@
               <select class="form-control" id="staffId" name="staffId">
                 <option value="">Select Staff ID</option>
               </select>
+              <span id="staffIdError" class="text-danger" style="display: none;">Staff ID is required</span>
+
             </div>
             <div class="col-md-6">
               <label for="fieldImage1" class="form-label">Field Image</label>
@@ -424,14 +448,15 @@
           <!--            <button type="button" class="btn btn-outline-secondary">Secondary</button>-->
           <button type="button" class="btn btn-outline-success" id="updatefields">UPDATE</button>
           <button type="button" class="btn btn-outline-danger" id="deleteFiled">DELETE</button>
+          <button type="button" class="btn btn-outline-dark" id="clearbtnFiled">CLEAR</button>
         </form>
 
         <!-- Table Header -->
-        <h2 class="text-center table-header p-3 rounded">Field Data Table</h2>
+<!--        <h2 class="text-center table-header p-3 rounded">Field Data Table</h2>-->
 
         <!-- Table to Display Data -->
         <table class="table table-bordered table-striped table-hover" id="filedTable">
-          <thead class="table-header">
+          <thead class="table-header thead-dark">
           <tr>
             <th scope="col">Field Code</th>
             <th scope="col">Field Name</th>
@@ -454,205 +479,9 @@
   <!-- Staff Section -->
   <section id="userSection" style="display: none;">
 
-      <h2 class="text-center">Register User</h2>
+      <h2 class="text-center">Staff Section</h2>
       <!-- Your User Section Content Goes Here -->
       <div class="container">
-<!--        <div  class="container-fluid mt-3">-->
-<!--          <form id="staffForm">-->
-<!--            &lt;!&ndash; Personal Information Section &ndash;&gt;-->
-<!--            <div class="form-section">-->
-
-<!--              <div class="row">-->
-<!--                &lt;!&ndash; Staff ID &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="staffId">Staff ID</label>-->
-<!--                  <input type="text" class="form-control" id="staffId1" name="staffId" readonly>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; First Name &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="firstName">First Name</label>-->
-<!--                  <input type="text" class="form-control" id="firstName" name="firstName" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Last Name &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="lastName">Last Name</label>-->
-<!--                  <input type="text" class="form-control" id="lastName" name="lastName" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Designation &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="designation">Designation</label>-->
-<!--                  <input type="text" class="form-control" id="designation" name="designation" required>-->
-<!--                </div>-->
-<!--              </div>-->
-
-
-
-<!--              <div class="row">-->
-<!--                &lt;!&ndash; Gender &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="gender">Gender</label>-->
-<!--                  <select class="form-control" id="gender" name="gender">-->
-<!--                    <option value="MALE">Male</option>-->
-<!--                    <option value="FEMALE">Female</option>-->
-<!--                  </select>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Joined Date &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="joinedDate">Joined Date</label>-->
-<!--                  <input type="date" class="form-control" id="joinedDate" name="joinedDate" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Date of Birth &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="dob">Date of Birth</label>-->
-<!--                  <input type="date" class="form-control" id="dob" name="dob" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Address Line 1 &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="addressLine1">Address Line 1</label>-->
-<!--                  <input type="text" class="form-control" id="addressLine1" name="addressLine1" placeholder="Address Line 1" required>-->
-<!--                </div>-->
-<!--              </div>-->
-
-<!--              <div class="row">-->
-<!--                &lt;!&ndash; Address Line 2 &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="addressLine2">Address Line 2</label>-->
-<!--                  <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Address Line 3 &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="addressLine3">Address Line 3</label>-->
-<!--                  <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Address Line 4 &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="addressLine4">Address Line 4</label>-->
-<!--                  <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Address Line 5 &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="addressLine5">Address Line 5</label>-->
-<!--                  <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5" required>-->
-<!--                </div>-->
-<!--              </div>-->
-
-
-<!--            </div>-->
-
-<!--            <div class="form-section">-->
-<!--&lt;!&ndash;              <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <label for="contactNo">Contact No</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <input type="text" class="form-control" id="contactNo" name="contactNo" required>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <label for="email1">Email</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <input type="email" class="form-control" id="email1" name="email" required>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <label for="fieldCode">Field Code</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <select class="form-control" id="fieldCode1" name="fieldCode">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <option value="">Select Field Code</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                  </select>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="col-md-6 mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <label for="vCode">V Code</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <select class="form-control" id="vCode" name="vcode">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <option value="">Select V Code</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                  </select>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--              <div class="row">-->
-<!--                &lt;!&ndash; Contact No &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="contactNo">Contact No</label>-->
-<!--                  <input type="text" class="form-control" id="contactNo" name="contactNo" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Email &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="email1">Email</label>-->
-<!--                  <input type="email" class="form-control" id="email1" name="email" required>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; Field Code &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="fieldCode">Field Code</label>-->
-<!--                  <select class="form-control" id="fieldCode1" name="fieldCode">-->
-<!--                    <option value="">Select Field Code</option>-->
-<!--                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;-->
-<!--                  </select>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; V Code &ndash;&gt;-->
-<!--                <div class="col-md-2 mb-3">-->
-<!--                  <label for="vCode">V Code</label>-->
-<!--                  <select class="form-control" id="vCode" name="vcode">-->
-<!--                    <option value="">Select V Code</option>-->
-<!--                    &lt;!&ndash; Add options dynamically as needed &ndash;&gt;-->
-<!--                  </select>-->
-<!--                </div>-->
-<!--              </div>-->
-
-<!--              <div class="row">-->
-<!--                <div class="col-md-6 mb-3">-->
-<!--                  <label for="members">Members</label>-->
-<!--                  <input type="number" class="form-control" id="members" name="members">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-
-<!--            <button type="button" class="btn btn-outline-primary" id="savestaffbtn">SAVE</button>-->
-<!--            &lt;!&ndash;            <button type="button" class="btn btn-outline-secondary">Secondary</button>&ndash;&gt;-->
-<!--            <button type="button" class="btn btn-outline-success" id="updatestaffbtn">UPDATE</button>-->
-<!--            <button type="button" class="btn btn-outline-danger" id="deletestaffbtn">DELETE</button>-->
-<!--          </form>-->
-
-<!--          &lt;!&ndash; Display Table &ndash;&gt;-->
-<!--          <div class="container mt-4">-->
-<!--            <h5>Staff Information Table</h5>-->
-<!--            <table class="table table-bordered table-responsive" id="staffTable">-->
-<!--              <thead>-->
-<!--              <tr>-->
-<!--                <th>Staff ID</th>-->
-<!--                <th>First Name</th>-->
-<!--                <th>Last Name</th>-->
-<!--                <th>Designation</th>-->
-<!--                <th>Gender</th>-->
-<!--                <th>Joined Date</th>-->
-<!--                <th>DOB</th>-->
-<!--                <th>Address1</th>-->
-<!--                <th>Address2</th>-->
-<!--                <th>Address3</th>-->
-<!--                <th>Address4</th>-->
-<!--                <th>Address5</th>-->
-<!--                <th>Contact No</th>-->
-<!--                <th>Email</th>-->
-<!--                <th>Members</th>-->
-<!--                <th>Field Code</th>-->
-<!--                <th> Vechile -Code</th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-<!--              <tbody id="staffTboady">-->
-<!--              &lt;!&ndash; Use JavaScript to populate this table dynamically based on form inputs &ndash;&gt;-->
-<!--              </tbody>-->
-<!--            </table>-->
-<!--          </div>-->
-
-<!--        </div>-->
 
         <div class="container-fluid mt-3">
           <form id="staffForm">
@@ -663,25 +492,48 @@
                 <div class="col-md-3 mb-3">
                   <label for="staffId">Staff ID</label>
                   <input type="text" class="form-control" id="staffId1" name="staffId" readonly>
+                  <span class="error" id="staffIdError1"></span>
                 </div>
 
                 <!-- First Name -->
                 <div class="col-md-3 mb-3">
                   <label for="firstName">First Name</label>
                   <input type="text" class="form-control" id="firstName" name="firstName" required>
+                  <span class="error" id="firstNameError"></span>
+
                 </div>
 
                 <!-- Last Name -->
                 <div class="col-md-3 mb-3">
                   <label for="lastName">Last Name</label>
                   <input type="text" class="form-control" id="lastName" name="lastName" required>
+                  <span class="error" id="lastNameError"></span>
+
                 </div>
 
                 <!-- Designation -->
+<!--                <div class="col-md-3 mb-3">-->
+<!--                  <label for="designation">Designation</label>-->
+<!--                  <input type="text" class="form-control" id="designation" name="designation" required>-->
+<!--                  <span class="error" id="designationError"></span>-->
+<!--                </div>-->
                 <div class="col-md-3 mb-3">
                   <label for="designation">Designation</label>
-                  <input type="text" class="form-control" id="designation" name="designation" required>
+                  <select class="form-control" id="designation" name="designation" required>
+<!--                    <option value="" disabled selected>Select Designation</option>-->
+                    <option value="AGRONOMIST">AGRONOMIST</option>
+                    <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                    <option value="SCIENTIST">SCIENTIST</option>
+                    <option value="ENGINEER">ENGINEER</option>
+                    <option value="TECHNICIAN">TECHNICIAN</option>
+                    <option value="SUPERVISOR">SUPERVISOR</option>
+                    <option value="ANALYST">ANALYST</option>
+                    <option value="CONSULTANT">CONSULTANT</option>
+                    <option value="INTERN">INTERN</option>
+                  </select>
+                  <span class="error" id="designationError" style="display:none;">Designation is required</span>
                 </div>
+
               </div>
 
               <div class="row">
@@ -692,24 +544,28 @@
                     <option value="MALE">Male</option>
                     <option value="FEMALE">Female</option>
                   </select>
+                  <span class="error" id="genderError"></span>
                 </div>
 
                 <!-- Joined Date -->
                 <div class="col-md-3 mb-3">
                   <label for="joinedDate">Joined Date</label>
                   <input type="date" class="form-control" id="joinedDate" name="joinedDate" required>
+                  <span class="error" id="joinedDateError"></span>
                 </div>
 
                 <!-- Date of Birth -->
                 <div class="col-md-3 mb-3">
                   <label for="dob">Date of Birth</label>
                   <input type="date" class="form-control" id="dob" name="dob" required>
+                  <span class="error" id="dobError"></span>
                 </div>
 
                 <!-- Address Line 1 -->
                 <div class="col-md-3 mb-3">
                   <label for="addressLine1">Address Line 1</label>
                   <input type="text" class="form-control" id="addressLine1" name="addressLine1" placeholder="Address Line 1" required>
+                  <span class="error" id="addressLine1Error"></span>
                 </div>
               </div>
 
@@ -718,24 +574,32 @@
                 <div class="col-md-3 mb-3">
                   <label for="addressLine2">Address Line 2</label>
                   <input type="text" class="form-control" id="addressLine2" name="addressLine2" placeholder="Address Line 2" required>
+                  <span class="error" id="addressLine2Error"></span>
+
                 </div>
 
                 <!-- Address Line 3 -->
                 <div class="col-md-3 mb-3">
                   <label for="addressLine3">Address Line 3</label>
                   <input type="text" class="form-control" id="addressLine3" name="addressLine3" placeholder="Address Line 3" required>
+                  <span class="error" id="addressLine3Error"></span>
+
                 </div>
 
                 <!-- Address Line 4 -->
                 <div class="col-md-3 mb-3">
                   <label for="addressLine4">Address Line 4</label>
                   <input type="text" class="form-control" id="addressLine4" name="addressLine4" placeholder="Address Line 4" required>
+                  <span class="error" id="addressLine4Error"></span>
+
                 </div>
 
                 <!-- Address Line 5 -->
                 <div class="col-md-3 mb-3">
                   <label for="addressLine5">Address Line 5</label>
                   <input type="text" class="form-control" id="addressLine5" name="addressLine5" placeholder="Address Line 5" required>
+                  <span class="error" id="addressLine5Error"></span>
+
                 </div>
               </div>
             </div>
@@ -746,12 +610,16 @@
                 <div class="col-md-3 mb-3">
                   <label for="contactNo">Contact No</label>
                   <input type="text" class="form-control" id="contactNo" name="contactNo" required>
+                  <span class="error" id="contactNoError"></span>
+
                 </div>
 
                 <!-- Email -->
                 <div class="col-md-3 mb-3">
                   <label for="email1">Email</label>
                   <input type="email" class="form-control" id="email1" name="email" required>
+                  <span class="error" id="emailError"></span>
+
                 </div>
 
                 <!-- Field Code -->
@@ -760,6 +628,7 @@
                   <select class="form-control" id="fieldCode1" name="fieldCode">
                     <option value="">Select Field Code</option>
                   </select>
+                  <span class="error" id="fieldCodeError1"></span>
                 </div>
 
                 <!-- V Code -->
@@ -768,6 +637,7 @@
                   <select class="form-control" id="vCode" name="vcode">
                     <option value="">Select V Code</option>
                   </select>
+                  <span class="error" id="vCodeError"></span>
                 </div>
               </div>
 
@@ -775,6 +645,8 @@
                 <div class="col-md-2 mb-3">
                   <label for="members">Members</label>
                   <input type="number" class="form-control" id="members" name="members">
+                  <span class="error" id="membersError"></span>
+
                 </div>
               </div>
             </div>
@@ -782,6 +654,7 @@
             <button type="button" class="btn btn-outline-primary" id="savestaffbtn">SAVE</button>
             <button type="button" class="btn btn-outline-success" id="updatestaffbtn">UPDATE</button>
             <button type="button" class="btn btn-outline-danger" id="deletestaffbtn">DELETE</button>
+            <button type="button" class="btn btn-outline-dark" id="clearStaff">CLEAR</button>
           </form>
 
           <!-- Display Table -->
@@ -789,7 +662,7 @@
             <h5>Staff Information Table</h5>
             <div >
               <table class="table table-bordered table-responsive" id="staffTable">
-                <thead>
+                <thead class="thead-dark">
                 <tr>
                   <th>Staff ID</th>
                   <th>First Name</th>
@@ -835,18 +708,22 @@
             <div class="col-md-3">
               <label for="equipmentId">Equipment ID</label>
               <input type="text" class="form-control" id="equipmentId" name="equipmentId" required>
+              <span id="equipmentIdError" class="text-danger"></span>
             </div>
             <div class="col-md-3">
               <label for="name1">Name</label>
               <input type="text" class="form-control" id="name1" name="name" required>
+              <span id="nameError" class="text-danger"></span>
+
             </div>
             <div class="col-md-2">
               <label for="type">Type</label>
               <select class="form-control" id="type" name="type" required>
                 <option value="ELECTRICAL">ELECTRICAL</option>
                 <option value="MECHANICAL">MECHANICAL</option>
-
               </select>
+              <span id="typeError" class="text-danger"></span>
+
             </div>
             <div class="col-md-2">
               <label for="status1">Status</label>
@@ -854,10 +731,12 @@
                 <option value="AVAILABLE">AVAILABLE</option>
                 <option value="NOT">NOT</option>
               </select>
+              <span id="statusError" class="text-danger"></span>
             </div>
             <div class="col-md-2">
               <label for="quantity">Quantity</label>
               <input type="number" class="form-control" id="quantity" name="equantity" required>
+              <span id="quantityError" class="text-danger"></span>
             </div>
           </div>
           <div class="row mt-3">
@@ -865,11 +744,13 @@
               <label for="assignedStaffId">Assigned Staff</label>
               <select class="form-control" id="assignedStaffId" name="assignedStaffId" required>
               </select>
+              <span id="staffError" class="text-danger"></span>
             </div>
             <div class="col-md-3">
               <label for="assignedFieldCode">Assigned Field Code</label>
               <select class="form-control" id="assignedFieldCode" name="assignedFieldCode" required>
               </select>
+              <span id="fieldCodeError" class="text-danger"></span>
             </div>
             <div class="col-md-3">
               <button type="button" class="btn btn-primary mt-4" id="saveEq">Add Equipment</button>
@@ -885,8 +766,8 @@
         <!-- Table to display equipment data -->
         <div class="table-container">
           <h3>Equipment List</h3>
-          <table class="table table-bordered" id="eqTable">
-            <thead>
+          <table class="table table-bordered table-hover table-dark" id="eqTable">
+            <thead class="table-dark">
             <tr>
               <th>Equipment ID</th>
               <th>Name</th>
@@ -919,15 +800,14 @@
         <form id="vehicleForm">
           <div class="row">
             <div class="col-md-6 mb-3" id="vcodecss">
-              <label for="vehicleCode">vehicleCode</label>
+              <label for="vehicleCode">Vehicle-Code</label>
               <input type="text" class="form-control" id="vehicleCode" name="vehicleCode" required>
-              <span>Vehicle-Code</span>
-              <i></i>
+              <span id="vehicleCodeError" class="text-danger"></span> <!-- Error message -->
             </div>
 
             <div class="col-md-6 mb-3" id="lnmbcss">
 
-              <label for="licensePlateNumber">LicensePlateNmb</label>
+              <label for="licensePlateNumber">License-Plate-Nmb</label>
                 <input type="text" class="form-control" id="licensePlateNumber" name="licensePlateNumber" required>
               <!--                    <label for="licensePlateNumber">LicensePlateNmb</label>-->
 
@@ -946,6 +826,7 @@
                 <option value="SUV">SUV</option>
                 <option value="CRANE">CRANE</option>
               </select>
+              <span id="vehicleCategoryError" class="text-danger"></span> <!-- Error message -->
             </div>
             <div class="form-group col-md-4">
               <label for="fuelType">Fuel Type</label>
@@ -955,6 +836,7 @@
                 <option value="PETROL">PETROL</option>
                 <option value="DIESEL">DIESEL</option>
               </select>
+              <span id="fuelTypeError" class="text-danger"></span> <!-- Error message -->
             </div>
             <div class="form-group col-md-4">
               <label for="status">Status</label>
@@ -964,6 +846,7 @@
                 <option value="ACTIVE">ACTIVE</option>
                 <option value="NOT">NOT</option>
               </select>
+              <span id="statusError1" class="text-danger"></span> <!-- Error message -->
             </div>
           </div>
           <div class="form-row">
@@ -972,16 +855,20 @@
               <select class="form-control" id="allocatedStaffId" name="allocatedStaffId">
                 <option>Select Staff</option>
               </select>
+              <span id="allocatedStaffIdError" class="text-danger"></span> <!-- Error message -->
             </div>
             <div class="form-group col-md-8">
               <label for="remarks">Remarks</label>
               <input type="text" class="form-control" id="remarks" name="remarks" placeholder="Enter remarks">
+              <span id="remarksError" class="text-danger"></span> <!-- Error message -->
             </div>
           </div>
           <button type="button" class="btn btn-outline-primary" id="saveVbtn">SAVE</button>
           <!--            <button type="button" class="btn btn-outline-secondary">Secondary</button>-->
           <button type="button" class="btn btn-outline-success" id="updateVbtn">UPDATE</button>
           <button type="button" class="btn btn-outline-danger" id="deleteVbtn">DELETE</button>
+          <button type="button" class="btn btn-outline-dark" id="clearVBtn">CLEAR</button>
+
         </form>
 
         <!-- Table for displaying vehicle details -->
@@ -1032,6 +919,7 @@
               <option value="SWWTPOTATO">SWEET POTATO</option>
               <option value="CASSSVA">CASSVA</option>
             </select>
+            <span id="cropCommonNameError" class="text-danger"></span> <!-- Error message -->
           </div>
 
           <!-- Crop Scientific Name -->
@@ -1044,19 +932,51 @@
               <option value="CH56">CH56</option>
               <option value="CS78">CS78</option>
             </select>
+            <span id="cropScientificNameError" class="text-danger"></span> <!-- Error message -->
+
           </div>
         </div>
 
 
+<!--        <div class="form-group row">-->
+<!--          &lt;!&ndash; Crop Image &ndash;&gt;-->
+<!--          <div class="col-md-4">-->
+<!--            <label for="cropImage">Crop Image</label>-->
+<!--            <input type="file" class="form-control-file" id="cropImage" name="cropImage" accept="image/*">-->
+<!--          </div>-->
+
+
+<!--          &lt;!&ndash; Crop Category &ndash;&gt;-->
+<!--          <div class="col-md-4" style="margin-right: 50px">-->
+<!--            <label for="category">Crop Category</label>-->
+<!--            <select class="form-control" id="category" name="category" required>-->
+<!--              <option value="FEED">FEED</option>-->
+<!--              <option value="FIBER">FIBER</option>-->
+<!--              <option value="OIL">OIL</option>-->
+<!--              <option value="CEREAL">CEREAL</option>-->
+<!--            </select>-->
+<!--            <span id="categoryError" class="text-danger"></span> &lt;!&ndash; Error message &ndash;&gt;-->
+
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Quantity &ndash;&gt;-->
+<!--          <div class="col-md-4">-->
+<!--            <label for="qty">Quantity</label>-->
+<!--            <input type="number" class="form-control" id="qty" name="qty" required>-->
+<!--            <span id="qtyError" class="text-danger"></span> &lt;!&ndash; Error message &ndash;&gt;-->
+
+<!--          </div>-->
+<!--        </div>-->
+
         <div class="form-group row">
           <!-- Crop Image -->
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12">
             <label for="cropImage">Crop Image</label>
             <input type="file" class="form-control-file" id="cropImage" name="cropImage" accept="image/*">
           </div>
 
           <!-- Crop Category -->
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12">
             <label for="category">Crop Category</label>
             <select class="form-control" id="category" name="category" required>
               <option value="FEED">FEED</option>
@@ -1064,14 +984,19 @@
               <option value="OIL">OIL</option>
               <option value="CEREAL">CEREAL</option>
             </select>
+            <span id="categoryError" class="text-danger"></span> <!-- Error message -->
           </div>
 
           <!-- Quantity -->
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12">
             <label for="qty">Quantity</label>
             <input type="number" class="form-control" id="qty" name="qty" required>
+            <span id="qtyError" class="text-danger"></span> <!-- Error message -->
           </div>
         </div>
+
+
+
 
         <div class="form-group row">
           <!-- Crop Season -->
@@ -1084,6 +1009,8 @@
               <option value="OCTOBER">OCTOBER</option>
               <option value="DECEMBER">DECEMBER</option>
             </select>
+            <span id="cropSeasonError" class="text-danger"></span> <!-- Error message -->
+
           </div>
 
           <!-- Field Codes -->
@@ -1091,6 +1018,8 @@
             <label for="fieldCodes">Field Codes</label>
             <select class="form-control" id="fieldCodes" name="fieldCodes" required>
             </select>
+            <span id="fieldCodesError" class="text-danger"></span> <!-- Error message -->
+
           </div>
 
           <!-- Field Names -->
@@ -1098,7 +1027,7 @@
             <label for="filedNames">Field Names</label>
 <!--            <input type="text" class="form-control" id="fieldNames" name="fieldNames" required>-->
             <input type="text" class="form-control" id="filedNames" name="filedNames" required>
-
+            <span id="filedNamesError" class="text-danger"></span> <!-- Error message -->
           </div>
         </div>
 
@@ -1108,11 +1037,12 @@
         <!--            <button type="button" class="btn btn-outline-secondary">Secondary</button>-->
         <button type="button" class="btn btn-outline-success" id="updaeCropbutton">UPDATE</button>
         <button type="button" class="btn btn-outline-danger" id="deleteCropBtn">DELETE</button>
+        <button type="button" class="btn btn-outline-dark" id="clearCropBtn">CLEAR</button>
 
       </form>
 
       <table class="table table-bordered table-striped table-hover" id="cropTable" style="margin-top: 20px">
-        <thead class="table-header">
+        <thead class="table-header thead-dark ">
         <tr>
           <th scope="col">Crop Code</th>
           <th scope="col">CropCommonName</th>
@@ -1136,7 +1066,6 @@
   <!-- Send Email Section -->
   <section id="emailSection" style="display: none;">
     <div class="container">
-      <h2 class="text-center">Send Email</h2>
       <!-- Your Send Email Content Goes Here -->
       <div class="container">
         <h2 class="text-center">Send Email</h2>
@@ -1147,14 +1076,19 @@
           <div class="form-group">
             <label for="toEmail">To</label>
             <input type="email" class="form-control" id="toEmail" name="to" placeholder="Enter recipient's email" required>
+            <span id="toEmailError" class="text-danger" style="display: none;"></span>
+
           </div>
           <div class="form-group">
             <label for="subject">Subject</label>
             <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject" required>
+            <span id="subjectError" class="text-danger" style="display: none;"></span>
+
           </div>
           <div class="form-group">
             <label for="body">Message</label>
             <textarea class="form-control" id="body" name="body" rows="4" placeholder="Enter message" required></textarea>
+            <span id="bodyError" class="text-danger" style="display: none;"></span>
           </div>
           <button type="submit" class="btn btn-primary">Send Email</button>
         </form>
@@ -1361,7 +1295,7 @@
 
   <section id="userSection2" style="display: none;">
     <div class="container" id="user2d">
-      <h2 class="text-center">Register User</h2>
+      <h2 class="text-center">Users-Mange</h2>
       <div class="message"></div>
       <form id="registrationForms2">
         <div class="row">
@@ -1375,7 +1309,7 @@
       </form>
       <h3 class="mt-5">Registered Users</h3>
       <table class="table table-bordered mt-3 table table-hover" id="userTable">
-        <thead>
+        <thead class="table-dark">
         <tr>
           <th>ID</th>
           <th>EMAIL</th>
@@ -1400,11 +1334,17 @@
 
 <script src="assects/sweetAlerts.js"></script>
 <script src="controllers/dashtest.js"></script>
+<script src="assects/validations/vechilevalidate.js"></script>
 <script src="controllers/vehicle.js"></script>
+<script src="assects/validations/emailvalidate.js"></script>
 <script src="controllers/email.js"></script>
+<script src="assects/validations/staffvalidate.js"></script>
 <script src="controllers/staff.js"></script>
+<script src="assects/validations/fieldvalidate.js"></script>
 <script src="controllers/field.js"></script>
+<script src="assects/validations/cropvalidate.js"></script>
 <script src="controllers/crop.js"></script>
+<script src="assects/validations/equipmentvalidate.js"></script>
 <script src="controllers/eq.js"></script>
 <script src="controllers/log.js"></script>
 <script src="controllers/users.js"></script>
@@ -1413,6 +1353,9 @@
 <script>
 
 </script>
+
+
+
 
 </body>
 </html>
